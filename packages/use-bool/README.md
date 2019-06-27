@@ -1,12 +1,12 @@
 ## Install
 
-```
-yarn add @jmdc-rehooks/use-bool
+```shell
+$ yarn add @jmdc-rehooks/use-bool
 ```
 
 ## Usage
 
-```
+```tsx
 import useBool = 'use-bool';
 
 const MyComponent = () => {
