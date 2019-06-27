@@ -1,3 +1,3 @@
 tsconfig.json
-*.spec.ts
-*.spec.tsx
+index.ts
+index.spec.ts
