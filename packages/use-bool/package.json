@@ -2,6 +2,9 @@
   "name": "@jmdc-rehooks/use-bool",
   "version": "0.1.1",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "lib"
   ],
@@ -22,5 +25,5 @@
   "peerDependencies": {
     "react": "^16.8.6"
   },
-  "gitHead": "131932a0b13ea41f5e28660ba135caa70c7795a5"
+  "gitHead": "4262fd7d956cfcf693cccb1c2080d8cd7fb65943"
 }
