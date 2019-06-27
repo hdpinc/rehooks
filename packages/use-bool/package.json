@@ -17,7 +17,7 @@
     "build:js": "BABEL_ENV=production babel index.ts --root-mode upward -d . --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx' -s",
     "build:types": "tsc index.ts",
     "prepare": "yarn run build",
-    "test": "jest --verbose"
+    "jest": "jest --verbose"
   },
   "peerDependencies": {
     "react": "^16.8.6"
