@@ -5,6 +5,5 @@
     "declarationMap": true,
     "emitDeclarationOnly": true,
     "noEmit": false
-  },
-  "exclude": ["**/*.stories.tsx", "**/*.spec.tsx"]
+  }
 }

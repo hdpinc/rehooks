@@ -2,7 +2,6 @@
   "name": "@jmdc-rehooks/use-bool",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "lib/use-bool.js",
   "files": [
     "lib"
   ],
@@ -14,11 +13,11 @@
     "url": "https://github.com/hdpinc/rehooks/issues"
   },
   "scripts": {
-    "build": "yarn run clean && yarn run build:js && yarn run build:types",
-    "build:js": "BABEL_ENV=production babel src --root-mode upward -d lib --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx' -s",
-    "build:types": "tsc",
-    "clean": "rm -rf lib && mkdir lib",
-    "prepare": "yarn run build"
+    "build": "yarn run build:js && yarn run build:types",
+    "build:js": "BABEL_ENV=production babel index.ts --root-mode upward -d . --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx' -s",
+    "build:types": "tsc index.ts",
+    "prepare": "yarn run build",
+    "test": "jest --verbose"
   },
   "peerDependencies": {
     "react": "^16.8.6"
