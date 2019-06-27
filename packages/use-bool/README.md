@@ -1,11 +1,21 @@
-# `use-bool`
+## Install
 
-> TODO: description
+```
+yarn add @jmdc-rehooks/use-bool
+```
 
 ## Usage
 
 ```
-const useBool = require('use-bool');
+import useBool = 'use-bool';
 
-// TODO: DEMONSTRATE API
+const MyComponent = () => {
+  const [isOpen, open, close] = useBool(false)
+
+  return (
+    <div>
+      ...
+    </div>
+  )
+}
 ```
