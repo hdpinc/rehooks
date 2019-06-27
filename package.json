@@ -6,9 +6,10 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -23,7 +24,6 @@
     "@typescript-eslint/eslint-plugin": "^1.11.0",
     "@typescript-eslint/parser": "^1.11.0",
     "babel-jest": "^24.8.0",
-    "core-js": "^3.1.4",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
@@ -37,9 +37,6 @@
     "lerna": "^3.14.1",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "typescript": "^3.5.2",
-    "webpack": "^4.35.0"
+    "typescript": "^3.5.2"
   }
 }
