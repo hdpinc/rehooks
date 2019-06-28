@@ -15,11 +15,11 @@ module.exports = {
     'compat/compat': 'warn',
     'no-console': 'off',
     'no-unused-vars': 'off',
-    'react/display-name': false,
+    'react/display-name': 'off',
     'react/jsx-curly-brace-presence': ['error', { props: 'always' }],
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',
-    'react/prop-types': false,
+    'react/prop-types': 'off',
   },
   settings: {
     react: {
