@@ -1,4 +1,0 @@
-// TODO:
-describe('useBool', () => {
-  it('', () => {})
-})
