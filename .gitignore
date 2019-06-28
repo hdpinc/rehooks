@@ -14,3 +14,8 @@ node_modules/
 
 lib/
 coverage/
+
+*.js.map
+*.ts.map
+*.d.ts
+*.d.ts.map
