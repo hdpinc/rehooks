@@ -1,0 +1,25 @@
+{
+  "name": "@jmdc-rehooks/use-restore-scroll-position",
+  "version": "0.1.5",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hdpinc/rehooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hdpinc/rehooks/issues"
+  },
+  "scripts": {
+    "build": "yarn run build:js && yarn run build:types",
+    "build:js": "BABEL_ENV=production babel index.ts --root-mode upward -d . --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx' -s",
+    "build:types": "tsc -p .",
+    "prepare": "yarn run build",
+    "jest": "jest --verbose"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  }
+}
