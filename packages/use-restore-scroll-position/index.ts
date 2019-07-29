@@ -6,6 +6,10 @@ export type RestoreScrollPositionOptions = {
 
   // style で scroll-behavior: 'smooth' を指定していても復元時だけは 'auto' にしたい、みたいなケースのため
   scrollBehavior?: ScrollBehavior
+
+  // URL でアンカーリンクを指定してるときはそっちを優先したい、みたいなケースがある。
+  // Hooks は 利用側に if 文を書けないので option として真偽値渡してこっちで条件分岐する方法を取る。
+  disable?: boolean
 }
 
 const getItem = (key: string) => {
@@ -25,11 +29,11 @@ const setItem = (key: string, value: any) => {
 }
 
 const useRestoreScrollPosition = (options: RestoreScrollPositionOptions) => {
-  const { target, scrollBehavior: _scrollBehavior } = options
+  const { target, scrollBehavior: _scrollBehavior, disable = false } = options
 
   useEffect(() => {
     const onUnload = () => {
-      if (!target.current) {
+      if (!target.current || disable) {
         return
       }
       const previousScroll = target.current.scrollTop
@@ -37,7 +41,7 @@ const useRestoreScrollPosition = (options: RestoreScrollPositionOptions) => {
     }
 
     const onLoad = () => {
-      if (!target.current) {
+      if (!target.current || disable) {
         return
       }
       const previousScroll = (getItem('previousScroll') as number) || 0
@@ -60,7 +64,7 @@ const useRestoreScrollPosition = (options: RestoreScrollPositionOptions) => {
     return () => {
       window.removeEventListener('unload', onUnload)
     }
-  }, [_scrollBehavior, target])
+  }, [_scrollBehavior, disable, target])
 }
 
 export default useRestoreScrollPosition
