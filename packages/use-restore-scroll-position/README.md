@@ -4,8 +4,7 @@ Restore previous scroll position after reloading the page.
 
 ## Usage
 
-```jsx
-import React from 'react'
+```jsx import React from 'react'
 import useRestoreScrollPosition from '@jmdc-rehooks/use-restore-scroll-position
 
 const Component = () => {
@@ -18,14 +17,14 @@ const Component = () => {
 
 ## Options
 
-### `target`
-
-#### `RefObject<HTMLElement>`
+### `target: RefObject<HTMLElement>`
 
 `RefObject` of the target scroll container.
 
-### `scrollBehavior`
-
-#### `"smooth" | "auto"`
+### `scrollBehavior: "smooth" | "auto"`
 
 Scroll behavior.
+
+### `disable: boolean`
+
+Disable restoring scroll position.
