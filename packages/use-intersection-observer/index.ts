@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useState } from 'react'
 
-type Options = {
+export type IntersectionObserverOptions = {
   callback?: IntersectionObserverCallback
   root?: RefObject<Element | null>
   rootMargin?: string
@@ -8,7 +8,7 @@ type Options = {
   threshold?: number | number[]
 }
 
-const useIntersectionObserver = (options: Options) => {
+const useIntersectionObserver = (options: IntersectionObserverOptions) => {
   const { root, target, rootMargin, threshold, callback = () => {} } = options
   const [entries, setEntries] = useState<IntersectionObserverEntry[]>([])
 
