@@ -13,11 +13,14 @@ const useIntersectionObserver = (options: IntersectionObserverOptions) => {
   const [entries, setEntries] = useState<IntersectionObserverEntry[]>([])
 
   useEffect(() => {
-    if (!target || !target.current) {
+    const current = target.current
+    if (!current) {
       console.warn('No target specified for Intersection Observer.')
       return
     }
 
+    // IntersectionObserver 未実装のブラウザのフォールバックに対応しているため eslint の警告は無視する
+    // eslint-disable-next-line compat/compat
     const observer = new IntersectionObserver(
       (entries) => {
         setEntries(entries)
@@ -30,10 +33,10 @@ const useIntersectionObserver = (options: IntersectionObserverOptions) => {
       }
     )
 
-    observer.observe(target.current as HTMLElement)
+    observer.observe(current)
 
     return () => {
-      observer.unobserve(target.current as HTMLElement)
+      observer.unobserve(current)
     }
   }, [callback, root, rootMargin, target, threshold])
 
