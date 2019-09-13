@@ -1,5 +1,6 @@
 tsconfig.json
 index.ts
-index.spec.ts
+index.spec.tsx
 jest.config.js
 .babelrc.js
+yarn-error.log
