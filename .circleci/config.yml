@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  jest:
+  test:
     docker:
       - image: node:12
     working_directory: ~/repository
@@ -8,17 +8,20 @@ jobs:
     steps:
       - checkout
       - restore_cache:
+          name: Restore Yarn Package Cache
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn install
+      - run: yarn lint
+      - run: npx lerna run jest
 
       - save_cache:
-          paths:
-            - node_modules
+          name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
-      - run: npx lerna run jest
+          paths:
+            - ~/.cache/yarn
 workflows:
   version: 2
   test:
     jobs:
-      - jest
+      - test
