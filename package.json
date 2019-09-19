@@ -11,11 +11,15 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "eslint --ext .js --ext .ts --ext .tsx packages"
+    "lint": "eslint --ext .js --ext .ts --ext .tsx packages",
+    "karma": "karma",
+    "test:karma:ie": "karma start --single-run --browsers ie_no_addons"
   },
   "dependencies": {
+    "core-js": "^3.3.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "regenerator-runtime": "^0.13.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -25,27 +29,41 @@
     "@babel/preset-typescript": "^7.6.0",
     "@jmdc/eslint-config-typescript-react": "^0.4.0",
     "@types/enzyme": "^3.10.3",
-    "@types/jest": "^24.0.18",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jasmine-enzyme": "^7.0.0",
     "@types/node": "^12.7.12",
-    "@types/react": "^16.9.5",
-    "@typescript-eslint/eslint-plugin": "^2.3.3",
-    "@typescript-eslint/parser": "^2.3.3",
-    "babel-jest": "^24.9.0",
+    "@types/react": "^16.9.6",
+    "@types/selenium-webdriver": "^4.0.5",
+    "@types/webpack": "^4.39.3",
+    "@types/webpack-env": "^1.14.1",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
+    "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-compat": "^3.3.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.19.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
     "husky": "^3.0.9",
-    "jest": "^24.9.0",
+    "jasmine": "^3.5.0",
+    "jasmine-enzyme": "^7.1.1",
+    "karma": "^4.3.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^1.2.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-jasmine": "^2.0.1",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-webpack": "^4.0.2",
     "lerna": "^3.17.0",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
-    "typescript": "^3.6.4"
+    "puppeteer": "^1.20.0",
+    "selenium-webdriver": "^4.0.0-alpha.5",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.1"
   }
 }

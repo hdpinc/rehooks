@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  test:
+  lint:
     docker:
       - image: node:12
     working_directory: ~/repository
@@ -13,7 +13,25 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn install
       - run: yarn lint
-      - run: npx lerna run jest
+
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+  test:
+    docker:
+      - image: hdpdev/node-for-puppeteer-docker:latest
+    working_directory: ~/repository
+
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - run: yarn karma start --single-run --browsers sl_IE11,sl_Edge,HeadlessChrome
 
       - save_cache:
           name: Save Yarn Package Cache
@@ -24,4 +42,5 @@ workflows:
   version: 2
   test:
     jobs:
+      - lint
       - test
