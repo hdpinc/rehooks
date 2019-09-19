@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import useBool from '../../index'
+import useBool from './index'
 
 const TestComponent: React.FC<{ initialValue: boolean }> = (props) => {
   const { initialValue } = props

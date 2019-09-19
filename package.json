@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "lint": "eslint --ext .js --ext .ts --ext .tsx packages",
-    "e2e": "karma start --single-run"
+    "test": "karma start --single-run"
   },
   "dependencies": {
     "react": "^16.9.0",
@@ -28,7 +28,6 @@
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jasmine-enzyme": "^7.0.0",
-    "@types/jest": "^24.0.18",
     "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
     "@types/selenium-webdriver": "^4.0.2",
@@ -36,7 +35,6 @@
     "@types/webpack-env": "^1.14.0",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
-    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "dotenv": "^8.1.0",
     "enzyme": "^3.10.0",
@@ -45,14 +43,12 @@
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-compat": "^3.3.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.17.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "husky": "^3.0.5",
     "jasmine": "^3.4.0",
     "jasmine-enzyme": "^7.1.1",
-    "jest": "^24.9.0",
     "karma": "^4.3.0",
     "karma-browserstack-launcher": "^1.5.1",
     "karma-chrome-launcher": "^3.1.0",

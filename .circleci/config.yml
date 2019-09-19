@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  lint-and-unit:
+  lint:
     docker:
       - image: node:12
     working_directory: ~/repository
@@ -13,14 +13,13 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn install
       - run: yarn lint
-      - run: npx lerna run jest
 
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-  e2e:
+  test:
     docker:
       - image: hdpdev/node-for-puppeteer-docker:latest
     working_directory: ~/repository
@@ -32,7 +31,7 @@ jobs:
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn install
-      - run: yarn e2e
+      - run: yarn test
 
       - save_cache:
           name: Save Yarn Package Cache
@@ -43,5 +42,5 @@ workflows:
   version: 2
   test:
     jobs:
-      - lint-and-unit
-      - e2e
+      - lint
+      - test
