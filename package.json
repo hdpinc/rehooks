@@ -53,6 +53,7 @@
     "karma-browserstack-launcher": "^1.5.1",
     "karma-chrome-launcher": "^3.1.0",
     "karma-jasmine": "^2.0.1",
+    "karma-sauce-launcher": "^2.0.2",
     "karma-webpack": "^4.0.2",
     "lerna": "^3.16.4",
     "lint-staged": "^9.2.5",
