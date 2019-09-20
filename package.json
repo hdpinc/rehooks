@@ -11,8 +11,7 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "eslint --ext .js --ext .ts --ext .tsx packages",
-    "test": "karma start --single-run"
+    "lint": "eslint --ext .js --ext .ts --ext .tsx packages"
   },
   "dependencies": {
     "react": "^16.9.0",
