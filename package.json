@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
-    "@jmdc/eslint-config-typescript-react": "^0.2.0",
+    "@jmdc/eslint-config-typescript-react": "^0.3.0",
     "@types/enzyme": "^3.10.3",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.5",

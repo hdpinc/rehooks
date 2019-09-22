@@ -986,10 +986,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@jmdc/eslint-config-typescript-react@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript-react/-/eslint-config-typescript-react-0.2.0.tgz#61275f56c138b7bf4bf2a9742e31f175125a2fbd"
-  integrity sha512-D/y6SQbs6SBuMjXFaJ0gSaax6OpreRNM83by+caXrk476mk3D5a4rsfh2je1avehIF6BFoBayBbAIw65xxKFjA==
+"@jmdc/eslint-config-typescript-react@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript-react/-/eslint-config-typescript-react-0.3.0.tgz#b331d0b692ca003edf1cfae20d391eb1448a75e9"
+  integrity sha512-PD5Qu+Q6QOYM2FQcD87B43cVdAeaiZMkB0HCBx19G2lY40f5b4oeFZkk+j45RhSARhuc9vqj49MhUZIct8GMoA==
 
 "@lerna/add@3.16.2":
   version "3.16.2"
