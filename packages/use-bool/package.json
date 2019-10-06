@@ -20,7 +20,7 @@
     "jest": "jest --verbose"
   },
   "peerDependencies": {
-    "react": "^16.10.1"
+    "react": "^16.10.2"
   },
   "gitHead": "4262fd7d956cfcf693cccb1c2080d8cd7fb65943"
 }

@@ -14,8 +14,8 @@
     "lint": "eslint --ext .js --ext .ts --ext .tsx packages"
   },
   "dependencies": {
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1"
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
