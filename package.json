@@ -11,7 +11,8 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "eslint --ext .js --ext .ts --ext .tsx packages"
+    "lint": "eslint --ext .js --ext .ts --ext .tsx packages",
+    "karma": "karma"
   },
   "dependencies": {
     "react": "^16.9.0",

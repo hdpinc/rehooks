@@ -96,6 +96,10 @@ module.exports = function(config) {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox'],
       },
+      ie: {
+        base: 'IE',
+        flags: ['-extoff'],
+      },
     },
 
     // start these browsers
