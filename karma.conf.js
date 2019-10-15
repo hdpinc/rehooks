@@ -12,7 +12,7 @@ module.exports = function(config) {
     browsers: ['ChromeHeadless'],
     singleRun: false,
     concurrency: Infinity,
-    files: ['./polyfills.ts', './enzyme.ts', 'packages/**/*.spec.ts', 'packages/**/*.spec.tsx'],
+    files: ['./karma-entry.ts'],
     preprocessors: {
       '**/*.ts': ['webpack'],
       '**/*.tsx': ['webpack'],
