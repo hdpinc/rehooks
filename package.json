@@ -13,8 +13,11 @@
   "scripts": {
     "lint": "eslint --ext .js --ext .ts --ext .tsx packages",
     "karma": "karma",
+    "test:karma:chrome": "karma start --single-run --browsers Chrome",
+    "test:karma:firefox": "karma start --single-run --browsers Firefox",
+    "test:karma:edge": "karma start --single-run --browsers Edge",
     "test:karma:ie": "karma start --single-run --browsers ie_no_addons",
-    "test:karma:edge": "karma start --single-run --browsers Edge"
+    "test:karma:safari": "karma start --single-run --browsers Safari"
   },
   "dependencies": {
     "core-js": "^3.3.2",
