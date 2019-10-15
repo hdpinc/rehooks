@@ -13,7 +13,7 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
-    files: ['./karma-entry.ts'],
+    files: ['./polyfills.ts', './enzyme.ts', './packages/**/*.spec.ts', './packages/**/*.spec.tsx'],
 
     // list of files / patterns to exclude
     exclude: [],
@@ -30,7 +30,9 @@ module.exports = function(config) {
 
     webpack: {
       mode: 'development',
-      devtool: 'inline-source-map',
+      resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+      },
       module: {
         rules: [
           {
@@ -38,9 +40,6 @@ module.exports = function(config) {
             loader: 'babel-loader',
           },
         ],
-      },
-      resolve: {
-        extensions: ['.ts', '.tsx', '.js'],
       },
       plugins: [
         new webpack.DefinePlugin({
@@ -60,7 +59,7 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     // 対象ブラウザはコマンドラインから与える
-    browsers: [],
+    browsers: ['ChromeHeadless'],
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
