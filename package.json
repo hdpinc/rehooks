@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "lint": "eslint --ext .js --ext .ts --ext .tsx packages",
-    "karma": "karma"
+    "karma": "karma",
+    "test:karma:ie": "karma start --single-run --browsers ie_no_addons"
   },
   "dependencies": {
     "react": "^16.9.0",

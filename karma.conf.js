@@ -20,13 +20,7 @@ module.exports = function(config) {
     exclude: [],
 
     //plugins
-    plugins: [
-      'karma-jasmine',
-      'karma-webpack',
-      'karma-browserstack-launcher',
-      'karma-sauce-launcher',
-      'karma-chrome-launcher',
-    ],
+    plugins: [],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -52,51 +46,9 @@ module.exports = function(config) {
       },
     },
 
-    sauceLabs: {
-      name: '@jmdc/rehooks browser testing',
-      username: process.env.SAUCE_USERNAME,
-      accessKey: process.env.SAUCE_ACCESS_KEY,
-    },
-
-    // global config of your BrowserStack account
-    browserStack: {
-      username: process.env.BROWSERSTACK_USERNAME,
-      accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-    },
-
     // define browsers
     customLaunchers: {
-      sl_IE11: {
-        base: 'SauceLabs',
-        browserName: 'internet explorer',
-        version: '11',
-        platform: 'Windows 10',
-      },
-      sl_Edge: {
-        base: 'SauceLabs',
-        browserName: 'microsoftedge',
-        version: '18',
-        platform: 'Windows 10',
-      },
-      bs_IE11: {
-        base: 'BrowserStack',
-        browser: 'IE',
-        browser_version: '11',
-        os: 'WINDOWS',
-        os_version: '10',
-      },
-      bs_Edge: {
-        base: 'BrowserStack',
-        browser: 'Edge',
-        browser_version: '18.0',
-        os: 'WINDOWS',
-        os_version: '10',
-      },
-      HeadlessChrome: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox'],
-      },
-      ie: {
+      ie_no_addons: {
         base: 'IE',
         flags: ['-extoff'],
       },
