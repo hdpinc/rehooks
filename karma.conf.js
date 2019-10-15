@@ -1,5 +1,4 @@
-require('dotenv').config()
-process.env.CHROME_BIN = require('puppeteer').executablePath()
+const webpack = require('webpack')
 
 // Karma configuration
 // Generated on Thu Sep 19 2019 17:43:04 GMT+0900 (GMT+09:00)
@@ -30,20 +29,24 @@ module.exports = function(config) {
     },
 
     webpack: {
-      mode: 'production',
+      mode: 'development',
       devtool: 'inline-source-map',
       module: {
         rules: [
           {
             test: /\.tsx?$/,
             loader: 'babel-loader',
-            exclude: /node_modules/,
           },
         ],
       },
       resolve: {
         extensions: ['.ts', '.tsx', '.js'],
       },
+      plugins: [
+        new webpack.DefinePlugin({
+          'process.env.test': true,
+        }),
+      ],
     },
 
     // define browsers
