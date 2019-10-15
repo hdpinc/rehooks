@@ -15,14 +15,27 @@ jobs:
       - run: nuget install Selenium.WebDriver.IEDriver -Version 3.150.0
       - run: yarn test:karma:ie
 
-  e2e-edge:
-    runs-on: windows-latest
+  e2e-safari:
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: warrenbuckley/Setup-Nuget@v1
       - uses: actions/setup-node@v1
         with:
           node-version: 12
       - run: yarn install
-      - run: nuget install Selenium.WebDriver.MicrosoftWebDriver -Version 10.0.17134
-      - run: yarn test:karma:edge
+      - run: yarn build
+      - run: |
+          sudo safaridriver --enable
+          safaridriver -p 0 &
+      - run: yarn test:karma:safari
+  # e2e-edge:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: warrenbuckley/Setup-Nuget@v1
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 12
+  #     - run: yarn install
+  #     - run: nuget install Selenium.WebDriver.MicrosoftWebDriver -Version 10.0.17134
+  #     - run: yarn test:karma:edge
