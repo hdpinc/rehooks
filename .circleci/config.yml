@@ -13,7 +13,7 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn install
       - run: yarn lint
-      - run: npx lerna run jest
+      - run: yarn jest
 
       - save_cache:
           name: Save Yarn Package Cache
