@@ -31,17 +31,19 @@ jobs:
   #         safaridriver -p 0 &
   #     - run: yarn test:karma:safari
 
-  karma-edge:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: warrenbuckley/Setup-Nuget@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: yarn install
-      - run: nuget install Selenium.WebDriver.MicrosoftWebDriver -Version 10.0.17134
-      - run: yarn test:karma:edge
+  # Edge は起動に失敗するのでいったんスキップ
+  #
+  # karma-edge:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: warrenbuckley/Setup-Nuget@v1
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 12
+  #     - run: yarn install
+  #     - run: nuget install Selenium.WebDriver.MicrosoftWebDriver -Version 10.0.17134
+  #     - run: yarn test:karma:edge
 
   karma-firefox:
     runs-on: windows-latest
