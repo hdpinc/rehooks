@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  lint:
+  test:
     docker:
       - image: node:12
     working_directory: ~/repository
@@ -13,6 +13,7 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn install
       - run: yarn lint
+      - run: yarn jest
 
       - save_cache:
           name: Save Yarn Package Cache
