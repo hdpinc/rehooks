@@ -1,5 +1,13 @@
 version: 2.1
+orbs:
+  win: circleci/windows@1.0.0
+
 jobs:
+  test-circleci:
+    executor: win/vs2019
+    steps:
+      - checkout
+
   test:
     docker:
       - image: node:12
@@ -24,4 +32,4 @@ workflows:
   version: 2
   test:
     jobs:
-      - test
+      - test-circleci
