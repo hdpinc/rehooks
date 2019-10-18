@@ -3,7 +3,7 @@ orbs:
   win: circleci/windows@1.0.0
 
 jobs:
-  test-circleci:
+  test-windows:
     executor: win/vs2019
     working_directory: ~/repository
     steps:
@@ -51,4 +51,5 @@ workflows:
   version: 2
   test:
     jobs:
-      - test-circleci
+      - test
+      - test-windows
