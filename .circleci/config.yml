@@ -5,8 +5,27 @@ orbs:
 jobs:
   test-circleci:
     executor: win/vs2019
+    working_directory: ~/repository
     steps:
       - checkout
+      - restore_cache:
+          name: Restore Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+            - nuget-packages
+      - run: yarn install
+      - run: nuget install Selenium.WebDriver.IEDriver -Version 3.150.0
+      - run: yarn test:karma:ie
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - C:\Users\circleci\AppData\Local\Yarn\Cache\v4
+      - save_cache:
+          name: Save Nuget Package Cache
+          key: nuget-packages
+          paths:
+            - C:\Users\circleci\.nuget\packages
 
   test:
     docker:
