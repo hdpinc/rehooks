@@ -20,7 +20,7 @@
     "test:karma:safari": "karma start --single-run --browsers Safari"
   },
   "dependencies": {
-    "core-js": "^3.3.2",
+    "core-js": "^3.4.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "regenerator-runtime": "^0.13.3"
