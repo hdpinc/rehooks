@@ -69,7 +69,7 @@
     "lerna": "^3.17.0",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
-    "puppeteer": "^1.20.0",
+    "puppeteer": "^2.0.0",
     "selenium-webdriver": "^4.0.0-alpha.5",
     "typescript": "^3.6.4",
     "webpack": "^4.41.1"
