@@ -19,6 +19,6 @@
     "prepare": "yarn run build"
   },
   "peerDependencies": {
-    "react": "^16.11.0"
+    "react": "^16.12.0"
   }
 }
