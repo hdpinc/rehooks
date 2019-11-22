@@ -19,7 +19,7 @@
     "prepare": "yarn run build"
   },
   "peerDependencies": {
-    "react": "^16.11.0"
+    "react": "^16.12.0"
   },
   "gitHead": "4262fd7d956cfcf693cccb1c2080d8cd7fb65943"
 }
