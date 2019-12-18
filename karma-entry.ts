@@ -6,6 +6,6 @@ import 'regenerator-runtime/runtime'
 // ===============================
 import './enzyme'
 
-const testsContext = require.context('./packages/', true, /.*spec\.tsx?$/)
+const testsContext = require.context('./src/', true, /.*spec\.tsx?$/)
 
 testsContext.keys().forEach(testsContext)

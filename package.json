@@ -24,6 +24,8 @@
     "karma": "karma",
     "lint": "eslint . --ext '.js,.ts,.tsx'",
     "prebuild": "yarn clean",
+    "test": "yarn jest",
+    "test:karma": "karma start --single-run",
     "test:karma:chrome": "karma start --single-run --browsers Chrome",
     "test:karma:firefox": "karma start --single-run --browsers Firefox",
     "test:karma:edge": "karma start --single-run --browsers Edge",
