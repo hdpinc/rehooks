@@ -24,7 +24,7 @@
     "karma": "karma",
     "lint": "eslint . --ext '.js,.ts,.tsx'",
     "prebuild": "yarn clean",
-    "test": "yarn jest",
+    "test": "TZ=Asia/Tokyo jest --verbose --color",
     "test:karma": "karma start --single-run",
     "test:karma:chrome": "karma start --single-run --browsers Chrome",
     "test:karma:firefox": "karma start --single-run --browsers Firefox",
@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "core-js": "^3.5.0",
+    "date-fns": "^2.8.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "regenerator-runtime": "^0.13.3"
@@ -44,10 +45,13 @@
   "devDependencies": {
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
     "@babel/preset-typescript": "^7.7.4",
     "@jmdc/eslint-config-typescript-react": "^0.11.0",
+    "@testing-library/react": "^9.4.0",
     "@types/enzyme": "^3.10.4",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jasmine-enzyme": "^7.0.0",
