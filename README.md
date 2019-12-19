@@ -1,3 +1,3 @@
-## Packages
+## Hooks
 
-- [useBool](https://github.com/hdpinc/rehooks/tree/master/packages/use-bool)
+- [useBool](https://github.com/hdpinc/rehooks/tree/master/src/use-bool)
