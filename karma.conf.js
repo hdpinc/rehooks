@@ -1,4 +1,6 @@
+const path = require('path')
 const webpack = require('webpack')
+
 module.exports = function(config) {
   config.set({
     basePath: '',
@@ -27,6 +29,15 @@ module.exports = function(config) {
           {
             test: /\.tsx?$/,
             use: 'babel-loader',
+          },
+          {
+            // https://github.com/FormidableLabs/enzyme-matchers/issues/329
+            test: /\.js$/,
+            use: 'babel-loader',
+            include: [
+              path.resolve(__dirname, 'node_modules/enzyme-matchers'),
+              path.resolve(__dirname, 'node_modules/jasmine-enzyme'),
+            ],
           },
         ],
       },
