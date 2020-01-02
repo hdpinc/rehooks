@@ -1,4 +1,4 @@
-import { mount } from 'enzyme'
+import { render, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { createEvent } from '../testing/utils'
 import useClickAway from './index'
@@ -13,34 +13,21 @@ const Comp: React.FC<{ handler: () => void }> = ({ handler }) => {
   return (
     <div>
       <div ref={ref}>
-        <div id={'inside'}>inside</div>
+        <div data-testid={'inside'}>inside</div>
       </div>
-      <div id={'outside'}>outside</div>
+      <div data-testid={'outside'}>outside</div>
     </div>
   )
 }
 
 const events: string[] = ['mousedown', 'touchstart']
 
-let container: HTMLElement | null
-
-beforeEach(() => {
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
-
-afterEach(() => {
-  document.body.removeChild(container as HTMLElement)
-  container = null
-})
-
 events.forEach((eventName) => {
   it(`Handler should be called when ${eventName} is fired outside the target.`, () => {
     const handler = jest.fn()
-    const wrapper = mount(<Comp handler={handler} />, { attachTo: container })
+    const { getByTestId } = render(<Comp handler={handler} />)
     const event = createEvent(eventName, { bubbles: true })
-    const target = wrapper.find('#outside').getDOMNode()
-    target.dispatchEvent(event)
+    fireEvent(getByTestId('outside'), event)
     expect(handler).toHaveBeenCalled()
   })
 })
@@ -48,10 +35,9 @@ events.forEach((eventName) => {
 events.forEach((eventName) => {
   it(`Handler should not be called when ${eventName} is fired inside the target.`, () => {
     const handler = jest.fn()
-    const wrapper = mount(<Comp handler={handler} />, { attachTo: container })
+    const { getByTestId } = render(<Comp handler={handler} />)
     const event = createEvent(eventName, { bubbles: true })
-    const target = wrapper.find('#inside').getDOMNode()
-    target.dispatchEvent(event)
+    fireEvent(getByTestId('inside'), event)
     expect(handler).not.toHaveBeenCalled()
   })
 })
