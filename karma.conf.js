@@ -16,6 +16,7 @@ module.exports = function(config) {
     concurrency: Infinity,
     files: ['./karma-entry.ts'],
     preprocessors: {
+      'node_modules/jasmine-enzyme/**/*.js': ['webpack'], // TODO: Delete this line after this PR is merged: https://github.com/FormidableLabs/enzyme-matchers/issues/329
       '**/*.ts': ['webpack'],
       '**/*.tsx': ['webpack'],
     },
@@ -31,13 +32,9 @@ module.exports = function(config) {
             use: 'babel-loader',
           },
           {
-            // https://github.com/FormidableLabs/enzyme-matchers/issues/329
             test: /\.js$/,
             use: 'babel-loader',
-            include: [
-              path.resolve(__dirname, 'node_modules/enzyme-matchers'),
-              path.resolve(__dirname, 'node_modules/jasmine-enzyme'),
-            ],
+            exclude: /node_modules/,
           },
         ],
       },

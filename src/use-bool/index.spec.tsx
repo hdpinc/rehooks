@@ -8,29 +8,24 @@ const TestComponent: React.FC<{ initialValue: boolean }> = (props) => {
   return (
     <div>
       <span id={'state'}>{state ? 'on' : 'off'}</span>
-      <button onClick={turnOn} id={'on'}></button>
-      <button onClick={turnOff} id={'off'}></button>
+      <button onClick={turnOn} id={'on'}>
+        on
+      </button>
+      <button onClick={turnOff} id={'off'}>
+        off
+      </button>
     </div>
   )
 }
 
-it('renders without an error', () => {
-  const wrapper = shallow(<TestComponent initialValue={false} />)
-  expect(wrapper.find('#state').props().children).toBe('off')
-})
-
 it('turns on', () => {
   const wrapper = shallow(<TestComponent initialValue={false} />)
-  // @ts-ignore
-  // prettier-ignore
-  wrapper.find('#on').props().onClick()
-  expect(wrapper.find('#state').props().children).toBe('on')
+  wrapper.find('#on').simulate('click')
+  expect(wrapper.find('#state').text()).toBe('on')
 })
 
 it('turns off', () => {
   const wrapper = shallow(<TestComponent initialValue={true} />)
-  // @ts-ignore
-  // prettier-ignore
-  wrapper.find('#off').props().onClick()
-  expect(wrapper.find('#state').props().children).toBe('off')
+  wrapper.find('#off').simulate('click')
+  expect(wrapper.find('#state').text()).toBe('off')
 })

@@ -1,27 +1,53 @@
 version: 2.1
+
+orbs:
+  win: circleci/windows@2.2.0
+
+commands:
+  install_yarn:
+    steps:
+      - restore_cache:
+          keys:
+            - yarn-packages-v2-{{ arch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v2-{{ arch }}-
+      - run: yarn
+  save_unix_yarn_cache:
+    steps:
+      - save_cache:
+          key: yarn-packages-v2-{{ arch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn/v6
+  save_windows_yarn_cache:
+    steps:
+      - save_cache:
+          key: yarn-packages-v2-{{ arch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/AppData/Local/Yarn/Cache/v6
+
 jobs:
-  test:
+  jest:
     docker:
       - image: node:12
-    working_directory: ~/repository
-
     steps:
+      - run: yarn cache dir
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run: yarn install
+      - install_yarn
+      - save_unix_yarn_cache
       - run: yarn lint
-      - run: yarn test
+      - run: yarn jest
 
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+  karma:
+    executor: win/default
+    steps:
+      - run: yarn cache dir
+      - checkout
+      - install_yarn
+      - save_windows_yarn_cache
+      - run: yarn karma:ie
+
 workflows:
   version: 2
   test:
     jobs:
-      - test
+      - jest
+      - karma
