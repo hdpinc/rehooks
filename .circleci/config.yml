@@ -8,19 +8,19 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - yarn-packages-v2-{{ arch }}-{{ checksum "yarn.lock" }}
-            - yarn-packages-v2-{{ arch }}-
+            - yarn-packages-v3-{{ arch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v3-{{ arch }}-
       - run: yarn
   save_unix_yarn_cache:
     steps:
       - save_cache:
-          key: yarn-packages-v2-{{ arch }}-{{ checksum "yarn.lock" }}
+          key: yarn-packages-v3-{{ arch }}-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn/v6
+            - /usr/local/share/.cache/yarn/v6
   save_windows_yarn_cache:
     steps:
       - save_cache:
-          key: yarn-packages-v2-{{ arch }}-{{ checksum "yarn.lock" }}
+          key: yarn-packages-v3-{{ arch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/AppData/Local/Yarn/Cache/v6
 
