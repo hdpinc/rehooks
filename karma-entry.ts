@@ -3,7 +3,6 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 // ===============================
-import './enzyme'
 
 const testsContext = require.context('./src/', true, /.*spec\.tsx?$/)
 
