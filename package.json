@@ -1,6 +1,6 @@
 {
   "name": "@jmdc/rehooks",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -29,7 +29,8 @@
     "karma:ie": "karma start --single-run --browsers ie_no_addons",
     "karma:safari": "karma start --single-run --browsers Safari",
     "lint": "eslint . --ext '.js,.ts,.tsx'",
-    "prebuild": "yarn clean"
+    "prebuild": "yarn clean",
+    "release": "standard-version"
   },
   "peerDependencies": {
     "react": ">=16.12.0"
