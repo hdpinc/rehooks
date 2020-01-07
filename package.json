@@ -30,6 +30,7 @@
     "karma:safari": "karma start --single-run --browsers Safari",
     "lint": "eslint . --ext '.js,.ts,.tsx'",
     "prebuild": "yarn clean",
+    "prepare": "yarn build",
     "release": "standard-version"
   },
   "peerDependencies": {
