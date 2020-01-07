@@ -98,6 +98,7 @@ const useDatepicker = (options: UseDatepickerOptions) => {
     setMonthMode,
     setYearMode,
     inputProps: {
+      readOnly: true,
       onFocus: open,
       onClick: open,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => setRawValue(e.target.value),
