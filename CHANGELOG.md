@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/hdpinc/rehooks/compare/v0.3.0...v0.3.1) (2020-01-07)
+
+
+### Features
+
+* add keydown events ([d1f182e](https://github.com/hdpinc/rehooks/commit/d1f182e99401ec73c27ea68329806933649212a6))
+* Datepicker ([#79](https://github.com/hdpinc/rehooks/issues/79)) ([4fae578](https://github.com/hdpinc/rehooks/commit/4fae5788f0b098f8a769a73880678a0875a344f8))
+
 ## [0.3.0](https://github.com/hdpinc/rehooks/compare/v0.2.0...v0.3.0) (2020-01-06)
 
 
