@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
-import useDatepicker, { UseDatepickerOptions } from '.'
+import { createEvent } from '../testing/utils'
+import useDatepicker, { UseDatepickerOptions } from './index'
 
 const Comp: React.FC<Partial<UseDatepickerOptions> & {
   data?: Partial<{ year: number; month: number }>
@@ -22,17 +23,17 @@ const Comp: React.FC<Partial<UseDatepickerOptions> & {
 describe('mode', () => {
   it(`enter date mode`, () => {
     const { getByTestId } = render(<Comp />)
-    fireEvent.click(getByTestId('date'))
+    fireEvent(getByTestId('date'), createEvent('click', { bubbles: true }))
     expect(getByTestId('mode').textContent).toBe('date')
   })
   it(`enter month mode`, () => {
     const { getByTestId } = render(<Comp />)
-    fireEvent.click(getByTestId('month'))
+    fireEvent(getByTestId('month'), createEvent('click', { bubbles: true }))
     expect(getByTestId('mode').textContent).toBe('month')
   })
   it(`enter year mode`, () => {
     const { getByTestId } = render(<Comp />)
-    fireEvent.click(getByTestId('year'))
+    fireEvent(getByTestId('year'), createEvent('click', { bubbles: true }))
     expect(getByTestId('mode').textContent).toBe('year')
   })
 })
