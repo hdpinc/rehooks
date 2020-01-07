@@ -1,13 +1,13 @@
 ## Install
 
 ```shell
-$ yarn add @jmdc-rehooks/use-bool
+$ yarn add @jmdc/rehooks
 ```
 
 ## Usage
 
 ```tsx
-import useBool = '@jmdc-rehooks/use-bool';
+import { useBool } = '@jmdc/rehooks';
 
 const TestComponent = () => {
   const [state, turnOn, turnOff] = useBool(false)
