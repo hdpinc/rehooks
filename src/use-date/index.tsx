@@ -16,9 +16,7 @@
 import { addMonths, addYears, format, parseISO, setDate, setMonth, setYear, subMonths, subYears } from 'date-fns'
 import React from 'react'
 
-export type UseDateOptions = {
-  format?: string
-}
+export type UseDateOptions = {}
 
 export type DateLike = Date | string | number
 

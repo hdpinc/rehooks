@@ -2,22 +2,13 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import useDate from './index'
 
-const setup = (options: { date: string; format?: string; amount?: number }) => {
-  const { date: initialDate, format, amount } = options
+const setup = (options: { date: string; amount?: number }) => {
+  const { date: initialDate, amount } = options
 
   const Comp: React.FC = () => {
-    const {
-      year,
-      month,
-      day,
-      dayOfWeek,
-      hours,
-      minutes,
-      seconds,
-      milliseconds,
-      formattedDate,
-      setHours,
-    } = useDate(initialDate, { format })
+    const { year, month, day, dayOfWeek, hours, minutes, seconds, milliseconds, setHours, format } = useDate(
+      initialDate
+    )
     return (
       <div>
         <div data-testid={'year'}>{year}</div>
@@ -28,8 +19,8 @@ const setup = (options: { date: string; format?: string; amount?: number }) => {
         <div data-testid={'minutes'}>{minutes}</div>
         <div data-testid={'seconds'}>{seconds}</div>
         <div data-testid={'milliseconds'}>{milliseconds}</div>
-        <div data-testid={'date'}>{formattedDate}</div>
         <button data-testid={'setHours'} onClick={() => setHours(amount ?? 0)} />
+        <div data-testid={'format'}>{format('yyyy-MM-dd')}</div>
       </div>
     )
   }
@@ -45,15 +36,10 @@ const setup = (options: { date: string; format?: string; amount?: number }) => {
     minutes: getByTestId('minutes'),
     seconds: getByTestId('seconds'),
     milliseconds: getByTestId('milliseconds'),
-    formattedDate: getByTestId('date'),
     setHours: getByTestId('setHours'),
+    format: getByTestId('format'),
   }
 }
-
-it('should return formattedDate as specified format.', () => {
-  const { formattedDate } = setup({ date: '2019-01-01T12:00:00', format: 'yyyy/MM/dd HH:mm:ss' })
-  expect(formattedDate.textContent).toBe('2019/01/01 12:00:00')
-})
 
 it('each numbers', () => {
   const { year, month, day, dayOfWeek, hours, minutes, seconds, milliseconds } = setup({
@@ -69,8 +55,9 @@ it('each numbers', () => {
   expect(milliseconds.textContent).toBe('0')
 })
 
-it('setHours', () => {
-  const { formattedDate, setHours } = setup({ date: '2019-01-01T00:00:00', format: 'yyyy-MM-dd HH:mm:ss', amount: 2 })
-  fireEvent.click(setHours)
-  expect(formattedDate.textContent).toBe('2019-01-01 02:00:00')
+it('format', () => {
+  const { format } = setup({
+    date: '2019-01-01T01:02:03',
+  })
+  expect(format.textContent).toBe('2019-01-01')
 })
