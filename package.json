@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "build": "yarn run build:js && yarn run build:types",
-    "build:js": "BABEL_ENV=production babel src -d dist --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx'",
+    "build:js": "cross-env BABEL_ENV=production babel src -d dist --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx'",
     "build:types": "tsc -p tsconfig.types.json",
     "clean": "rimraf dist",
     "jest": "TZ=Asia/Tokyo jest --verbose --color",
@@ -64,6 +64,7 @@
     "@typescript-eslint/parser": "^2.14.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-compat": "^3.3.0",
     "eslint-plugin-import": "^2.19.1",
