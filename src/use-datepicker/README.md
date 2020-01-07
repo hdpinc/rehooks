@@ -3,7 +3,8 @@
 ```tsx
 import { useDatepicker } = '@jmdc/rehooks';
 
-const Datepicker = (props) => {
+const Datepicker: React.FC<DatepickerProps> = (props) => {
+  const { min, max, initialValue } = props
   const {
     years,
     months,
@@ -18,7 +19,12 @@ const Datepicker = (props) => {
     setValue,
     isOpen,
     close,
-  } = useDatepicker({})
+    open,
+  } = useDatepicker({
+    initialValue,
+    min,
+    max,
+  })
 
   const ref = React.useRef(null)
   useClickAway(ref, () => {
@@ -26,105 +32,135 @@ const Datepicker = (props) => {
   })
 
   return (
-    <div ref={ref}>
-      <input {...inputProps} readOnly={true} />
+    <Wrapper ref={ref}>
+      <input {...inputProps} style={{ width: '100%' }} />
       {isOpen && (
-        <div>
-          {mode === 'year' && (
-            <>
-              <div style={{ display: 'flex' }}>
-                <button onClick={() => uiDate.subYears(10)}>&laquo;</button>
-                <div>
-                  <button onClick={setDateMode}>{uiDate.format('yyyy年')}</button>
-                  <button onClick={setMonthMode}>{uiDate.format('MM月')}</button>
-                </div>
-                <button onClick={() => uiDate.addYears(10)}>&raquo;</button>
-              </div>
-              <div>
-                {years.map(({ label, value }) => (
-                  <button
-                    key={value}
-                    onClick={() => {
-                      uiDate.setYear(value)
-                      setDateMode()
-                    }}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
-          {mode === 'month' && (
-            <>
-              <div style={{ display: 'flex' }}>
-                <button onClick={uiDate.subYear}>&laquo;</button>
-                <div>
-                  <button onClick={setYearMode}>{uiDate.format('yyyy年')}</button>
-                  <button onClick={setDateMode}>{uiDate.format('MM月')}</button>
-                </div>
-                <button onClick={uiDate.addYear}>&raquo;</button>
-              </div>
-              <div>
-                {months.map(({ label, month }) => (
-                  <button
-                    key={month}
-                    onClick={() => {
-                      uiDate.setMonth(month)
-                      setDateMode()
-                    }}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
-          {mode === 'date' && (
-            <>
-              <div style={{ display: 'flex' }}>
-                <button onClick={uiDate.subYear}>&laquo;</button>
-                <button onClick={uiDate.subMonth}>&lt;</button>
-                <div>
-                  <button onClick={setYearMode}>{uiDate.format('yyyy年')}</button>
-                  <button onClick={setMonthMode}>{uiDate.format('MM月')}</button>
-                </div>
-                <button onClick={uiDate.addMonth}>&gt;</button>
-                <button onClick={uiDate.addYear}>&raquo;</button>
-              </div>
-              <table>
-                <thead>
-                  <tr>
-                    {headerRow.map(({ label, day }) => (
-                      <th key={day}>{label}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {rows.map((cols, index) => (
-                    <tr key={index}>
-                      {cols.map((col, index) => (
-                        <td key={index}>
-                          <button
+        <PopUp>
+          <Calendar>
+            {mode === 'year' && (
+              <>
+                <CalendarHeader>
+                  <CalendarHeaderControlLink style={{ float: 'left' }} onClick={() => uiDate.subYears(10)}>
+                    «
+                  </CalendarHeaderControlLink>
+                  <CalendarHeaderYearMonthLink onClick={setDateMode}>
+                    {uiDate.format('yyyy年')}
+                  </CalendarHeaderYearMonthLink>
+                  <CalendarHeaderYearMonthLink onClick={setMonthMode}>
+                    {uiDate.format('MM月')}
+                  </CalendarHeaderYearMonthLink>
+                  <CalendarHeaderControlLink style={{ float: 'right' }} onClick={() => uiDate.addYears(10)}>
+                    »
+                  </CalendarHeaderControlLink>
+                </CalendarHeader>
+                <CalendarYear>
+                  {years.map(({ label, value }) => (
+                    <CalendarYearLink
+                      key={value}
+                      isSelected={uiDate.year === value}
+                      onClick={() => {
+                        uiDate.setYear(value)
+                        setDateMode()
+                      }}
+                    >
+                      {label}
+                    </CalendarYearLink>
+                  ))}
+                </CalendarYear>
+              </>
+            )}
+            {mode === 'month' && (
+              <>
+                <CalendarHeader>
+                  <CalendarHeaderControlLink style={{ float: 'left' }} onClick={uiDate.subYear}>
+                    «
+                  </CalendarHeaderControlLink>
+                  <CalendarHeaderYearMonthLink onClick={setYearMode}>
+                    {uiDate.format('yyyy年')}
+                  </CalendarHeaderYearMonthLink>
+                  <CalendarHeaderYearMonthLink onClick={setDateMode}>
+                    {uiDate.format('MM月')}
+                  </CalendarHeaderYearMonthLink>
+                  <CalendarHeaderControlLink style={{ float: 'right' }} onClick={uiDate.addYear}>
+                    »
+                  </CalendarHeaderControlLink>
+                </CalendarHeader>
+                <CalendarMonth>
+                  {months.map(({ label, value }) => (
+                    <CalendarMonthLink
+                      key={value}
+                      isSelected={uiDate.month === value}
+                      onClick={() => {
+                        uiDate.setMonth(value)
+                        setDateMode()
+                      }}
+                    >
+                      {label}
+                    </CalendarMonthLink>
+                  ))}
+                </CalendarMonth>
+              </>
+            )}
+            {mode === 'date' && (
+              <>
+                <CalendarHeader>
+                  <CalendarHeaderControlLink style={{ float: 'left' }} onClick={uiDate.subYear}>
+                    «
+                  </CalendarHeaderControlLink>
+                  <CalendarHeaderControlLink style={{ float: 'left' }} onClick={uiDate.subMonth}>
+                    ‹
+                  </CalendarHeaderControlLink>
+                  <CalendarHeaderYearMonthLink onClick={setYearMode}>
+                    {uiDate.format('yyyy年')}
+                  </CalendarHeaderYearMonthLink>
+                  <CalendarHeaderYearMonthLink onClick={setMonthMode}>
+                    {uiDate.format('MM月')}
+                  </CalendarHeaderYearMonthLink>
+                  <CalendarHeaderControlLink style={{ float: 'right' }} onClick={uiDate.addYear}>
+                    »
+                  </CalendarHeaderControlLink>
+                  <CalendarHeaderControlLink style={{ float: 'right' }} onClick={uiDate.addMonth}>
+                    ›
+                  </CalendarHeaderControlLink>
+                </CalendarHeader>
+                <CalendarTable>
+                  <thead>
+                    <tr>
+                      {headerRow.map(({ label, value }) => (
+                        <CalendarTh key={value}>{label}</CalendarTh>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map((cols, index) => (
+                      <tr key={index}>
+                        {cols.map((col, index) => (
+                          <CalendarTd
+                            key={index}
+                            isWithinInterval={col.isWithinInterval}
+                            isSelected={col.isSelected}
+                            isCurrentMonth={col.isCurrentMonth}
                             onClick={() => {
-                              setValue(col)
+                              if (!col.isWithinInterval) {
+                                return
+                              }
+                              setValue(col.date)
                               close()
                             }}
                           >
-                            {col.getDate()}
-                          </button>
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </>
-          )}
-        </div>
+                            {col.date.getDate()}
+                          </CalendarTd>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </CalendarTable>
+              </>
+            )}
+          </Calendar>
+        </PopUp>
       )}
-    </div>
+    </Wrapper>
   )
 }
-
 ```

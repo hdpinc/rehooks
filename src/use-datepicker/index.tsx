@@ -1,4 +1,4 @@
-import { format, parseISO, startOfMonth } from 'date-fns'
+import { format, isAfter, isBefore, isSameDay, isSameMonth, parseISO, startOfMonth } from 'date-fns'
 import React from 'react'
 import useDate, { DateLike } from '../use-date'
 import { useBool } from '../index'
@@ -9,6 +9,8 @@ type InputMode = 'date' | 'month' | 'year'
 const initialMode: InputMode = 'date'
 
 export type UseDatepickerOptions = {
+  max?: string
+  min?: string
   locale?: string
   initialValue?: DateLike
 }
@@ -58,14 +60,26 @@ const NOVEMBER = new Date('2000-11-01')
 const DECEMBER = new Date('2000-12-01')
 
 const useDatepicker = (options: UseDatepickerOptions) => {
-  const { initialValue, locale = 'ja' } = options
+  const { min, max, initialValue, locale = 'ja' } = options
   const [mode, setMode] = React.useState<InputMode>(initialMode)
   const [rawValue, setRawValue] = React.useState<string>(
     initialValue === undefined || initialValue === '' ? '' : format(normalizeDate(initialValue), 'yyyy-MM-dd')
   )
   const [isOpen, open, close] = useBool(false)
   const uiDate = useDate(startOfMonth(normalizeDate(new Date())))
-  const rows = getDateMatrixForYearMonth(uiDate.year, uiDate.month)
+  const rows = getDateMatrixForYearMonth<{
+    date: Date
+    isCurrentMonth: boolean
+    isWithinInterval: boolean
+    isSelected: boolean
+  }>(uiDate.year, uiDate.month, (date) => ({
+    date,
+    isCurrentMonth: isSameMonth(date, uiDate.date),
+    isWithinInterval:
+      (!min || isSameDay(date, parseISO(min)) || isAfter(date, parseISO(min))) &&
+      (!max || isSameDay(date, parseISO(max)) || isBefore(date, parseISO(max))),
+    isSelected: !!rawValue && isSameDay(date, normalizeDate(rawValue)),
+  }))
 
   const setDateMode = React.useCallback(() => {
     setMode('date')
@@ -99,6 +113,8 @@ const useDatepicker = (options: UseDatepickerOptions) => {
     setYearMode,
     inputProps: {
       readOnly: true,
+      min,
+      max,
       onFocus: open,
       onClick: open,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => setRawValue(e.target.value),
@@ -110,27 +126,27 @@ const useDatepicker = (options: UseDatepickerOptions) => {
       value: year,
     })),
     months: [
-      { label: monthIntl.format(JANUARY), month: 0 },
-      { label: monthIntl.format(FEBRUARY), month: 1 },
-      { label: monthIntl.format(MARCH), month: 2 },
-      { label: monthIntl.format(APRIL), month: 3 },
-      { label: monthIntl.format(MAY), month: 4 },
-      { label: monthIntl.format(JUNE), month: 5 },
-      { label: monthIntl.format(JULY), month: 6 },
-      { label: monthIntl.format(AUGUST), month: 7 },
-      { label: monthIntl.format(SEPTEMBER), month: 8 },
-      { label: monthIntl.format(OCTOBER), month: 9 },
-      { label: monthIntl.format(NOVEMBER), month: 10 },
-      { label: monthIntl.format(DECEMBER), month: 11 },
+      { label: monthIntl.format(JANUARY), value: 0 },
+      { label: monthIntl.format(FEBRUARY), value: 1 },
+      { label: monthIntl.format(MARCH), value: 2 },
+      { label: monthIntl.format(APRIL), value: 3 },
+      { label: monthIntl.format(MAY), value: 4 },
+      { label: monthIntl.format(JUNE), value: 5 },
+      { label: monthIntl.format(JULY), value: 6 },
+      { label: monthIntl.format(AUGUST), value: 7 },
+      { label: monthIntl.format(SEPTEMBER), value: 8 },
+      { label: monthIntl.format(OCTOBER), value: 9 },
+      { label: monthIntl.format(NOVEMBER), value: 10 },
+      { label: monthIntl.format(DECEMBER), value: 11 },
     ],
     headerRow: [
-      { label: weekdayIntl.format(SUNDAY), day: 0 },
-      { label: weekdayIntl.format(MONDAY), day: 1 },
-      { label: weekdayIntl.format(TUESDAY), day: 2 },
-      { label: weekdayIntl.format(WEDNESDAY), day: 3 },
-      { label: weekdayIntl.format(THURSDAY), day: 4 },
-      { label: weekdayIntl.format(FRIDAY), day: 5 },
-      { label: weekdayIntl.format(SATURDAY), day: 6 },
+      { label: weekdayIntl.format(SUNDAY), value: 0 },
+      { label: weekdayIntl.format(MONDAY), value: 1 },
+      { label: weekdayIntl.format(TUESDAY), value: 2 },
+      { label: weekdayIntl.format(WEDNESDAY), value: 3 },
+      { label: weekdayIntl.format(THURSDAY), value: 4 },
+      { label: weekdayIntl.format(FRIDAY), value: 5 },
+      { label: weekdayIntl.format(SATURDAY), value: 6 },
     ],
     uiDate,
     mode,
