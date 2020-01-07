@@ -6,17 +6,12 @@ import { useDate } = '@jmdc/rehooks';
 
 
 const TestComponent = () => {
-  const {
-    date,
-    dateStr,
-    prevMonth,
-    nextMonth,
-  } = useDate(new Date(), { format: 'yyyy-MM-dd' })
+  const date = useDate(new Date())
   return (
     <div>
-      <button onClick={prevMonth}>Prev month</button>
-      <button onClick={nextMonth}>Next month</button>
-      <div>{dateStr}</div>
+      <button onClick={date.prevMonth}>Prev month</button>
+      <button onClick={date.nextMonth}>Next month</button>
+      <div>{date.format('yyyy-MM')}</div>
     </div>
   )
 }
