@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/hdpinc/rehooks/compare/v0.4.0...v0.5.0) (2020-01-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* fix datepicker
+
+### Features
+
+* accept DateLike for min and max prop ([0e6d5e4](https://github.com/hdpinc/rehooks/commit/0e6d5e49ed5626efc87d5d87dd8d16050306bf87))
+* fix datepicker ([2c07868](https://github.com/hdpinc/rehooks/commit/2c078688b2a32e412846bbade8d484decfe40348))
+
 ## [0.4.0](https://github.com/hdpinc/rehooks/compare/v0.3.2...v0.4.0) (2020-01-07)
 
 
