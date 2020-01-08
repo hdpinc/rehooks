@@ -1,10 +1,19 @@
 ## Usage
 
 ```tsx
-import { useDatepicker } = '@jmdc/rehooks';
+export type DatepickerProps = {
+  value: string
+  onChange?: (value: string) => void
+  inputProps?: {
+    id?: string
+    className?: string
+    max?: string
+    min?: string
+  }
+}
 
 const Datepicker: React.FC<DatepickerProps> = (props) => {
-  const { min, max, initialValue } = props
+  const { inputProps: _inputProps, value, onChange } = props
   const {
     years,
     months,
@@ -12,18 +21,16 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
     headerRow,
     uiDate,
     mode,
+    inputProps,
     setYearMode,
     setMonthMode,
     setDateMode,
-    inputProps,
-    setValue,
     isOpen,
     close,
     open,
   } = useDatepicker({
-    initialValue,
-    min,
-    max,
+    value,
+    inputProps: _inputProps,
   })
 
   const ref = React.useRef(null)
@@ -33,7 +40,13 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
 
   return (
     <Wrapper ref={ref}>
-      <input {...inputProps} style={{ width: '100%' }} />
+      <Input
+        {...inputProps}
+        onFocus={() => {
+          open()
+        }}
+      />
+      <CalendarButton type={'button'} onClick={open} />
       {isOpen && (
         <PopUp>
           <Calendar>
@@ -137,6 +150,7 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
                         {cols.map((col, index) => (
                           <CalendarTd
                             key={index}
+                            tabIndex={0}
                             isWithinInterval={col.isWithinInterval}
                             isSelected={col.isSelected}
                             isCurrentMonth={col.isCurrentMonth}
@@ -144,7 +158,7 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
                               if (!col.isWithinInterval) {
                                 return
                               }
-                              setValue(col.date)
+                              onChange?.(col.dateStr)
                               close()
                             }}
                           >
