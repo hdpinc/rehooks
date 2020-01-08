@@ -85,7 +85,7 @@ describe('daysOfWeek', () => {
   it('should be week names.', () => {
     // With locale: 'en' because there is no way to test 'ja' locale on jsdom.
     const { getByTestId } = render(<Comp locale={'en'} />)
-    expect(getByTestId('days-of-week').textContent).toBe('SunMonTueWedThuFriSat')
+    expect(getByTestId('days-of-week').textContent).toEqual('SunMonTueWedThuFriSat')
   })
 })
 
@@ -93,7 +93,7 @@ describe('months', () => {
   it('should be month names.', () => {
     // With locale: 'en' because there is no way to test 'ja' locale on jsdom.
     const { getByTestId } = render(<Comp locale={'en'} />)
-    expect(getByTestId('months').textContent).toBe('JanFebMarAprMayJunJulAugSepOctNovDec')
+    expect(getByTestId('months').textContent).toEqual('JanFebMarAprMayJunJulAugSepOctNovDec')
   })
 })
 
