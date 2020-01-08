@@ -8,20 +8,18 @@ type InputMode = 'date' | 'month' | 'year'
 
 const initialMode: InputMode = 'date'
 
-// https://qiita.com/uhyo/items/d74af1d8c109af43849e
-// 同時に指定できないプロパティが存在する場合の型定義は上記記事を参考にしています。
 export type UseDatepickerOptions = {
   value: string
+  max?: DateLike
+  min?: DateLike
+  locale?: string
   inputProps?: {
-    max?: string
-    min?: string
-
     id?: string
     className?: string
     name?: string
     type?: string
+    required?: boolean
   }
-  locale?: string
 }
 
 export type UseDatepickerReturn = {
@@ -104,13 +102,15 @@ const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
   const [mode, setMode] = React.useState<InputMode>(initialMode)
   const [isOpen, open, close] = useBool(false)
   const uiDate = useDate(startOfMonth(normalizeDate(new Date())))
+  const minDate = options.min ? normalizeDate(options.min) : undefined
+  const maxDate = options.max ? normalizeDate(options.max) : undefined
   const dateRows = getDateMatrixForYearMonth<DateCell>(uiDate.year, uiDate.month, (date) => ({
     date,
     dateStr: normalizeDateStr(date),
     isCurrentMonth: isSameMonth(date, uiDate.date),
     isWithinInterval:
-      (!inputProps?.min || isSameDay(date, parseISO(inputProps.min)) || isAfter(date, parseISO(inputProps.min))) &&
-      (!inputProps?.max || isSameDay(date, parseISO(inputProps.max)) || isBefore(date, parseISO(inputProps.max))),
+      (!minDate || isSameDay(date, minDate) || isAfter(date, minDate)) &&
+      (!maxDate || isSameDay(date, maxDate) || isBefore(date, maxDate)),
     isSelected: !!value && isSameDay(date, normalizeDate(value)),
   }))
 
@@ -138,6 +138,8 @@ const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
     setYearMode,
     inputProps: {
       readOnly: true,
+      min: normalizeDateStr(minDate),
+      max: normalizeDateStr(maxDate),
       value,
       ...inputProps,
     },
