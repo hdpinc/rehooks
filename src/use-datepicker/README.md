@@ -4,13 +4,16 @@
 import { useDatepicker } = '@jmdc/rehooks'
 
 export type DatepickerProps = {
+  max?: Date | string | number
+  min?: Date | string | number
   value: string
   onChange?: (value: string) => void
   inputProps?: {
     id?: string
     className?: string
-    max?: string
-    min?: string
+    name?: string
+    type?: string
+    required?: boolean
   }
 }
 
@@ -19,8 +22,8 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
   const {
     years,
     months,
-    rows,
-    headerRow,
+    dateRows,
+    daysOfWeek,
     uiDate,
     mode,
     inputProps,
@@ -31,6 +34,8 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
     close,
     open,
   } = useDatepicker({
+    min,
+    max,
     value,
     inputProps: _inputProps,
   })
@@ -141,13 +146,13 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
                 <CalendarTable>
                   <thead>
                     <tr>
-                      {headerRow.map(({ label, value }) => (
+                      {daysOfWeek.map(({ label, value }) => (
                         <CalendarTh key={value}>{label}</CalendarTh>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {rows.map((cols, index) => (
+                    {dateRows.map((cols, index) => (
                       <tr key={index}>
                         {cols.map((col, index) => (
                           <CalendarTd
@@ -179,4 +184,5 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
     </Wrapper>
   )
 }
+
 ```
