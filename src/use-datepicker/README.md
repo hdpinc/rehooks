@@ -1,6 +1,8 @@
 ## Usage
 
 ```tsx
+import { useDatepicker } = '@jmdc/rehooks'
+
 export type DatepickerProps = {
   value: string
   onChange?: (value: string) => void
