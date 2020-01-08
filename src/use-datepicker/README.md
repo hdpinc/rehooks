@@ -1,29 +1,43 @@
 ## Usage
 
 ```tsx
-import { useDatepicker } = '@jmdc/rehooks';
+import { useDatepicker } = '@jmdc/rehooks'
+
+export type DatepickerProps = {
+  max?: Date | string | number
+  min?: Date | string | number
+  value: string
+  onChange?: (value: string) => void
+  inputProps?: {
+    id?: string
+    className?: string
+    name?: string
+    type?: string
+    required?: boolean
+  }
+}
 
 const Datepicker: React.FC<DatepickerProps> = (props) => {
-  const { min, max, initialValue } = props
+  const { inputProps: _inputProps, value, onChange } = props
   const {
     years,
     months,
-    rows,
-    headerRow,
+    dateRows,
+    daysOfWeek,
     uiDate,
     mode,
+    inputProps,
     setYearMode,
     setMonthMode,
     setDateMode,
-    inputProps,
-    setValue,
     isOpen,
     close,
     open,
   } = useDatepicker({
-    initialValue,
     min,
     max,
+    value,
+    inputProps: _inputProps,
   })
 
   const ref = React.useRef(null)
@@ -33,7 +47,13 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
 
   return (
     <Wrapper ref={ref}>
-      <input {...inputProps} style={{ width: '100%' }} />
+      <Input
+        {...inputProps}
+        onFocus={() => {
+          open()
+        }}
+      />
+      <CalendarButton type={'button'} onClick={open} />
       {isOpen && (
         <PopUp>
           <Calendar>
@@ -126,17 +146,18 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
                 <CalendarTable>
                   <thead>
                     <tr>
-                      {headerRow.map(({ label, value }) => (
+                      {daysOfWeek.map(({ label, value }) => (
                         <CalendarTh key={value}>{label}</CalendarTh>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {rows.map((cols, index) => (
+                    {dateRows.map((cols, index) => (
                       <tr key={index}>
                         {cols.map((col, index) => (
                           <CalendarTd
                             key={index}
+                            tabIndex={0}
                             isWithinInterval={col.isWithinInterval}
                             isSelected={col.isSelected}
                             isCurrentMonth={col.isCurrentMonth}
@@ -144,7 +165,7 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
                               if (!col.isWithinInterval) {
                                 return
                               }
-                              setValue(col.date)
+                              onChange?.(col.dateStr)
                               close()
                             }}
                           >
@@ -163,4 +184,5 @@ const Datepicker: React.FC<DatepickerProps> = (props) => {
     </Wrapper>
   )
 }
+
 ```

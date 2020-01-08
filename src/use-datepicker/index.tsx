@@ -1,6 +1,6 @@
 import { format, isAfter, isBefore, isSameDay, isSameMonth, parseISO, startOfMonth } from 'date-fns'
 import React from 'react'
-import useDate, { DateLike } from '../use-date'
+import useDate, { DateLike, UseDateReturn } from '../use-date'
 import { useBool } from '../index'
 import { getDateMatrixForYearMonth } from './utils'
 
@@ -9,23 +9,61 @@ type InputMode = 'date' | 'month' | 'year'
 const initialMode: InputMode = 'date'
 
 export type UseDatepickerOptions = {
-  max?: string
-  min?: string
+  value: string
+  max?: DateLike
+  min?: DateLike
   locale?: string
-  initialValue?: DateLike
+  inputProps?: {
+    id?: string
+    className?: string
+    name?: string
+    type?: string
+    required?: boolean
+  }
 }
 
 export type UseDatepickerReturn = {
-  enterDateMode: () => void
-  enterMonthMode: () => void
-  enterYearMode: () => void
+  isOpen: boolean
+  open: () => void
+  close: () => void
+  inputProps: any
+  dateRows: DateCell[][]
+  years: { label: string; value: number }[]
+  months: { label: string; value: number }[]
+  daysOfWeek: { label: string; value: number }[]
+  uiDate: UseDateReturn
+  setDateMode: () => void
+  setMonthMode: () => void
+  setYearMode: () => void
+  mode: InputMode
 }
 
-const normalizeDate = (date: DateLike): Date => {
+type DateCell = {
+  date: Date
+  dateStr: string
+  isCurrentMonth: boolean
+  isWithinInterval: boolean
+  isSelected: boolean
+}
+
+const normalizeDate = (date: DateLike | undefined): Date => {
+  if (typeof date === 'undefined') {
+    return new Date(NaN)
+  }
   if (typeof date === 'string') {
     return parseISO(date)
   } else {
     return new Date(date)
+  }
+}
+
+export const normalizeDateStr = (date: DateLike | undefined): string => {
+  const d = normalizeDate(date)
+  if (Number.isNaN(+d)) {
+    // Invalid Date
+    return ''
+  } else {
+    return format(d, 'yyyy-MM-dd')
   }
 }
 
@@ -59,70 +97,55 @@ const OCTOBER = new Date('2000-10-01')
 const NOVEMBER = new Date('2000-11-01')
 const DECEMBER = new Date('2000-12-01')
 
-const useDatepicker = (options: UseDatepickerOptions) => {
-  const { min, max, initialValue, locale = 'ja' } = options
+const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
+  const { value, inputProps, locale = 'ja' } = options
   const [mode, setMode] = React.useState<InputMode>(initialMode)
-  const [rawValue, setRawValue] = React.useState<string>(
-    initialValue === undefined || initialValue === '' ? '' : format(normalizeDate(initialValue), 'yyyy-MM-dd')
-  )
   const [isOpen, open, close] = useBool(false)
   const uiDate = useDate(startOfMonth(normalizeDate(new Date())))
-  const rows = getDateMatrixForYearMonth<{
-    date: Date
-    isCurrentMonth: boolean
-    isWithinInterval: boolean
-    isSelected: boolean
-  }>(uiDate.year, uiDate.month, (date) => ({
+  const minDate = options.min ? normalizeDate(options.min) : undefined
+  const maxDate = options.max ? normalizeDate(options.max) : undefined
+  const dateRows = getDateMatrixForYearMonth<DateCell>(uiDate.year, uiDate.month, (date) => ({
     date,
+    dateStr: normalizeDateStr(date),
     isCurrentMonth: isSameMonth(date, uiDate.date),
     isWithinInterval:
-      (!min || isSameDay(date, parseISO(min)) || isAfter(date, parseISO(min))) &&
-      (!max || isSameDay(date, parseISO(max)) || isBefore(date, parseISO(max))),
-    isSelected: !!rawValue && isSameDay(date, normalizeDate(rawValue)),
+      (!minDate || isSameDay(date, minDate) || isAfter(date, minDate)) &&
+      (!maxDate || isSameDay(date, maxDate) || isBefore(date, maxDate)),
+    isSelected: !!value && isSameDay(date, normalizeDate(value)),
   }))
 
-  const setDateMode = React.useCallback(() => {
+  const setDateMode = () => {
     setMode('date')
-  }, [setMode])
+  }
 
-  const setMonthMode = React.useCallback(() => {
+  const setMonthMode = () => {
     setMode('month')
-  }, [setMode])
+  }
 
-  const setYearMode = React.useCallback(() => {
+  const setYearMode = () => {
     setMode('year')
-  }, [setMode])
+  }
 
   const weekdayIntl = new Intl.DateTimeFormat(locale, { weekday: 'short' })
   const monthIntl = new Intl.DateTimeFormat(locale, { month: 'short' })
-  const setValue = (date: DateLike) => {
-    setRawValue(date === '' ? '' : format(normalizeDate(date), 'yyyy-MM-dd'))
-  }
-  const clearValue = () => {
-    setRawValue('')
-  }
 
   return {
     isOpen,
     open,
     close,
-    setValue,
-    clearValue,
     setDateMode,
     setMonthMode,
     setYearMode,
     inputProps: {
       readOnly: true,
-      min,
-      max,
-      onFocus: open,
-      onClick: open,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => setRawValue(e.target.value),
-      value: rawValue,
+      min: normalizeDateStr(minDate),
+      max: normalizeDateStr(maxDate),
+      value,
+      ...inputProps,
     },
-    rows,
+    dateRows,
     years: range(Math.floor(uiDate.year / 10) * 10, Math.floor(uiDate.year / 10) * 10 + 9).map((year) => ({
-      label: year,
+      label: '' + year,
       value: year,
     })),
     months: [
@@ -139,7 +162,7 @@ const useDatepicker = (options: UseDatepickerOptions) => {
       { label: monthIntl.format(NOVEMBER), value: 10 },
       { label: monthIntl.format(DECEMBER), value: 11 },
     ],
-    headerRow: [
+    daysOfWeek: [
       { label: weekdayIntl.format(SUNDAY), value: 0 },
       { label: weekdayIntl.format(MONDAY), value: 1 },
       { label: weekdayIntl.format(TUESDAY), value: 2 },
