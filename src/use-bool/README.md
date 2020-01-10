@@ -1,9 +1,3 @@
-## Install
-
-```shell
-$ yarn add @jmdc/rehooks
-```
-
 ## Usage
 
 ```tsx
