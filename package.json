@@ -33,7 +33,7 @@
     "release": "standard-version"
   },
   "peerDependencies": {
-    "react": ">=16.8"
+    "react": ">=16.12.0"
   },
   "dependencies": {
     "core-js": "^3.6.1",
