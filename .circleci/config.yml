@@ -47,9 +47,44 @@ jobs:
       - save_windows_yarn_cache
       - run: yarn karma:ie
 
+  create-release-pr:
+    parallelism: 1
+    resource_class: small
+    docker:
+      - image: circleci/buildpack-deps:curl
+    steps:
+      - run:
+          name: create release PR
+          command: |
+            curl -X POST --data-urlencode "payload={\"channel\": \"#notice-frontend\", \"text\": \"@hdp-bot release rehooks\"}" $SLACK_WEBHOOK_URL
+  release:
+    docker:
+      - image: node:12
+    steps:
+      - run: npm i -g yarn --force
+      - run: yarn cache dir
+      - checkout
+      - install_yarn
+      - save_unix_yarn_cache
+      - run: yarn build
+      - run: npx semantic-release
+
 workflows:
   version: 2
-  test:
+  build-test-and-deploy:
     jobs:
+      - create-release-pr:
+          filters:
+            branches:
+              only:
+                - master
       - jest
       - karma
+      - release:
+          requires:
+            - jest
+            - karma
+          filters:
+            branches:
+              only:
+                - release
