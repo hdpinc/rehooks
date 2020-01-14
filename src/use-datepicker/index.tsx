@@ -1,7 +1,6 @@
 import { format, isAfter, isBefore, isSameDay, isSameMonth, parseISO, startOfMonth } from 'date-fns'
 import React from 'react'
 import useDate, { DateLike, UseDateReturn } from '../use-date'
-import { useBool } from '../index'
 import { getDateMatrixForYearMonth } from './utils'
 
 type InputMode = 'date' | 'month' | 'year'
@@ -13,19 +12,14 @@ export type UseDatepickerOptions = {
   max?: DateLike
   min?: DateLike
   locale?: string
-  inputProps?: {
-    id?: string
-    className?: string
-    name?: string
-    type?: string
-    required?: boolean
-  }
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>
 }
 
 export type UseDatepickerReturn = {
   isOpen: boolean
   open: () => void
   close: () => void
+  toggle: () => void
   inputProps: any
   dateRows: DateCell[][]
   years: { label: string; value: number }[]
@@ -100,7 +94,7 @@ const DECEMBER = new Date('2000-12-01')
 const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
   const { value, inputProps, locale = 'ja' } = options
   const [mode, setMode] = React.useState<InputMode>(initialMode)
-  const [isOpen, open, close] = useBool(false)
+  const [isOpen, setOpen] = React.useState(false)
   const uiDate = useDate(startOfMonth(normalizeDate(new Date())))
   const minDate = options.min ? normalizeDate(options.min) : undefined
   const maxDate = options.max ? normalizeDate(options.max) : undefined
@@ -126,6 +120,10 @@ const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
     setMode('year')
   }
 
+  const open = () => setOpen(true)
+  const close = () => setOpen(false)
+  const toggle = () => setOpen((isOpen) => !isOpen)
+
   const weekdayIntl = new Intl.DateTimeFormat(locale, { weekday: 'short' })
   const monthIntl = new Intl.DateTimeFormat(locale, { month: 'short' })
 
@@ -133,6 +131,7 @@ const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
     isOpen,
     open,
     close,
+    toggle,
     setDateMode,
     setMonthMode,
     setYearMode,

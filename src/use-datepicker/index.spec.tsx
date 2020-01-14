@@ -16,6 +16,7 @@ const Comp: React.FC<Partial<UseDatepickerOptions>> = (props) => {
     isOpen,
     open,
     close,
+    toggle,
     dateRows,
   } = useDatepicker({
     value: '',
@@ -48,6 +49,7 @@ const Comp: React.FC<Partial<UseDatepickerOptions>> = (props) => {
       <div>
         <button onClick={open} data-testid={'open'} />
         <button onClick={close} data-testid={'close'} />
+        <button onClick={toggle} data-testid={'toggle'} />
         <div data-testid={'is-open'}>{isOpen ? 'open' : 'close'}</div>
       </div>
       <div data-testid={'date-rows'}>
@@ -123,6 +125,14 @@ describe('isOpen', () => {
     const { getByTestId } = render(<Comp />)
     fireEvent(getByTestId('open'), createEvent('click', { bubbles: true }))
     fireEvent(getByTestId('close'), createEvent('click', { bubbles: true }))
+    expect(getByTestId('is-open').textContent).toBe('close')
+  })
+  it('should be toggled after calling "toggle".', () => {
+    const { getByTestId } = render(<Comp />)
+    expect(getByTestId('is-open').textContent).toBe('close')
+    fireEvent(getByTestId('toggle'), createEvent('click', { bubbles: true }))
+    expect(getByTestId('is-open').textContent).toBe('open')
+    fireEvent(getByTestId('toggle'), createEvent('click', { bubbles: true }))
     expect(getByTestId('is-open').textContent).toBe('close')
   })
 })
