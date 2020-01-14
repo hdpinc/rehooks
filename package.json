@@ -29,8 +29,7 @@
     "karma:safari": "karma start --single-run --browsers Safari",
     "lint": "eslint . --ext '.js,.ts,.tsx'",
     "prebuild": "yarn clean",
-    "prepare": "yarn build",
-    "release": "standard-version"
+    "prepare": "yarn build"
   },
   "peerDependencies": {
     "react": ">=16.12.0"
@@ -85,7 +84,6 @@
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "semantic-release": "^16.0.1",
-    "standard-version": "^7.0.1",
     "typescript": "^3.7.4",
     "webpack": "^4.41.5"
   }
