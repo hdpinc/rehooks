@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/hdpinc/rehooks/compare/v0.5.1...v0.5.2) (2020-01-14)
+
+
+### Features
+
+* use-toggle ([ed32fc4](https://github.com/hdpinc/rehooks/commit/ed32fc4405f3f03cdc8928f7460d05739fc3d17a))
+* **date-picker:** toggle "isOpen" state ([f258b46](https://github.com/hdpinc/rehooks/commit/f258b46030a7c2d63a62ac38d0fb64a055580b27))
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.6.3 ([44eee67](https://github.com/hdpinc/rehooks/commit/44eee6721ec03de173f23534c9192aa21f2cae56))
+* **deps:** update dependency date-fns to ^2.9.0 ([c41d50f](https://github.com/hdpinc/rehooks/commit/c41d50f0008f070513d45a285120ee0362515169))
+
 ### [0.5.1](https://github.com/hdpinc/rehooks/compare/v0.5.0...v0.5.1) (2020-01-08)
 
 ## [0.5.0](https://github.com/hdpinc/rehooks/compare/v0.4.0...v0.5.0) (2020-01-08)
