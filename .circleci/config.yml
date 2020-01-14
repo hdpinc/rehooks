@@ -78,12 +78,17 @@ workflows:
             branches:
               only:
                 - master
-      - jest
-      - karma
+      - jest:
+          filters:
+            branches:
+              ignore:
+                - release
+      - karma:
+          filters:
+            branches:
+              ignore:
+                - release
       - release:
-          requires:
-            - jest
-            - karma
           filters:
             branches:
               only:
