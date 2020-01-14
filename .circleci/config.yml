@@ -47,9 +47,27 @@ jobs:
       - save_windows_yarn_cache
       - run: yarn karma:ie
 
+  release:
+    docker:
+      - image: node:12
+    steps:
+      - run: npm i -g yarn --force
+      - run: yarn cache dir
+      - checkout
+      - install_yarn
+      - save_unix_yarn_cache
+      - run: yarn
+
 workflows:
   version: 2
   test:
     jobs:
       - jest
       - karma
+  release:
+    jobs:
+      - release:
+          filters:
+            branches:
+              ignore:
+                - release
