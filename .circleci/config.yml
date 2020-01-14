@@ -57,7 +57,6 @@ jobs:
           name: create release PR
           command: |
             curl -X POST --data-urlencode "payload={\"channel\": \"#notice-frontend\", \"text\": \"@hdp-bot release rehooks\"}" $SLACK_WEBHOOK_URL
-
   release:
     docker:
       - image: node:12
@@ -67,25 +66,25 @@ jobs:
       - checkout
       - install_yarn
       - save_unix_yarn_cache
-      - run: yarn
+      - run: yarn build
+      - run: npx semantic-release
 
 workflows:
   version: 2
-  test:
-    jobs:
-      - jest
-      - karma
-  create-release-pr:
+  build-test-and-deploy:
     jobs:
       - create-release-pr:
           filters:
             branches:
               only:
                 - master
-  release:
-    jobs:
+      - jest
+      - karma
       - release:
+          requires:
+            - jest
+            - karma
           filters:
             branches:
-              ignore:
+              only:
                 - release
