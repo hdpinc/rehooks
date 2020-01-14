@@ -47,6 +47,17 @@ jobs:
       - save_windows_yarn_cache
       - run: yarn karma:ie
 
+  create-release-pr:
+    parallelism: 1
+    resource_class: small
+    docker:
+      - image: circleci/buildpack-deps:curl
+    steps:
+      - run:
+          name: create release PR
+          command: |
+            curl -X POST --data-urlencode "payload={\"channel\": \"#notice-frontend\", \"text\": \"@hdp-bot release rehooks\"}" $SLACK_WEBHOOK_URL
+
   release:
     docker:
       - image: node:12
@@ -64,6 +75,13 @@ workflows:
     jobs:
       - jest
       - karma
+  create-release-pr:
+    jobs:
+      - create-release-pr:
+          filters:
+            branches:
+              only:
+                - master
   release:
     jobs:
       - release:
