@@ -185,3 +185,15 @@ describe('dateRows', () => {
     expect(getIsWithinIntervalByDate('2020-01-16')).toBe('false')
   })
 })
+
+it('defaultUiDate', () => {
+  const Comp = () => {
+    const { uiDate } = useDatepicker({
+      value: '',
+      defaultUiDate: '2019-01-01',
+    })
+    return <div data-testid={'ui-date'}>{uiDate.format('yyyy-MM')}</div>
+  }
+  const { getByTestId } = render(<Comp />)
+  expect(getByTestId('ui-date').textContent).toBe('2019-01')
+})
