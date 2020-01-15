@@ -13,6 +13,7 @@ export type UseDatepickerOptions = {
   min?: DateLike
   defaultUiDate?: DateLike
   locale?: string
+  weekStartsOn?: number
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>
 }
 
@@ -93,7 +94,13 @@ const NOVEMBER = new Date('2000-11-01')
 const DECEMBER = new Date('2000-12-01')
 
 const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
-  const { value, inputProps, defaultUiDate = startOfMonth(new Date()), locale = 'ja' } = options
+  const {
+    value,
+    inputProps,
+    defaultUiDate = startOfMonth(new Date()),
+    locale = 'ja',
+    weekStartsOn = SUNDAY.getDay(),
+  } = options
   const [mode, setMode] = React.useState<InputMode>(initialMode)
   const [isOpen, setOpen] = React.useState(false)
   const uiDate = useDate(normalizeDate(defaultUiDate))
@@ -162,15 +169,18 @@ const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
       { label: monthIntl.format(NOVEMBER), value: 10 },
       { label: monthIntl.format(DECEMBER), value: 11 },
     ],
-    daysOfWeek: [
-      { label: weekdayIntl.format(SUNDAY), value: 0 },
-      { label: weekdayIntl.format(MONDAY), value: 1 },
-      { label: weekdayIntl.format(TUESDAY), value: 2 },
-      { label: weekdayIntl.format(WEDNESDAY), value: 3 },
-      { label: weekdayIntl.format(THURSDAY), value: 4 },
-      { label: weekdayIntl.format(FRIDAY), value: 5 },
-      { label: weekdayIntl.format(SATURDAY), value: 6 },
-    ],
+    daysOfWeek: [SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY]
+      .sort((a, b) => {
+        const aday = a.getDay()
+        const bday = b.getDay()
+        return (aday < weekStartsOn ? aday + 7 : aday) - (bday < weekStartsOn ? bday + 7 : bday)
+      })
+      .map((dayOfWeek) => {
+        return {
+          label: weekdayIntl.format(dayOfWeek),
+          value: dayOfWeek.getDay(),
+        }
+      }),
     uiDate,
     mode,
   }
