@@ -11,6 +11,7 @@ export type UseDatepickerOptions = {
   value: string
   max?: DateLike
   min?: DateLike
+  defaultUiDate?: DateLike
   locale?: string
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>
 }
@@ -92,10 +93,10 @@ const NOVEMBER = new Date('2000-11-01')
 const DECEMBER = new Date('2000-12-01')
 
 const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
-  const { value, inputProps, locale = 'ja' } = options
+  const { value, inputProps, defaultUiDate = startOfMonth(new Date()), locale = 'ja' } = options
   const [mode, setMode] = React.useState<InputMode>(initialMode)
   const [isOpen, setOpen] = React.useState(false)
-  const uiDate = useDate(startOfMonth(normalizeDate(new Date())))
+  const uiDate = useDate(normalizeDate(defaultUiDate))
   const minDate = options.min ? normalizeDate(options.min) : undefined
   const maxDate = options.max ? normalizeDate(options.max) : undefined
   const dateRows = getDateMatrixForYearMonth<DateCell>(uiDate.year, uiDate.month, (date) => ({
