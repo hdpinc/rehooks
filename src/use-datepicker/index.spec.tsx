@@ -85,21 +85,50 @@ describe('mode', () => {
   })
 })
 
-// FIXME: I don't know why but it fails on karma.
-xdescribe('daysOfWeek', () => {
+describe('daysOfWeek', () => {
   it('should be week names.', () => {
     // With locale: 'en' because there is no way to test 'ja' locale on jsdom.
     const { getByTestId } = render(<Comp locale={'en'} />)
-    expect(getByTestId('days-of-week').textContent).toBe('SunMonTueWedThuFriSat')
+    // textContent on IE contains zero-width spaces.
+    expect(
+      getByTestId('days-of-week')
+        .textContent?.split(String.fromCharCode(8206))
+        .join('')
+    ).toBe('SunMonTueWedThuFriSat')
   })
 })
 
-// FIXME: I don't know why but it fails on karma.
-xdescribe('months', () => {
+describe('weekStartsOn', () => {
+  const labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  ;[0, 1, 2, 3, 4, 5, 6].forEach((weekStartsOn) => {
+    it(`week starts on ${labels[weekStartsOn]}`, () => {
+      // With locale: 'en' because there is no way to test 'ja' locale on jsdom.
+      const { getByTestId } = render(<Comp locale={'en'} weekStartsOn={weekStartsOn} />)
+      // textContent on IE contains zero-width spaces.
+      expect(
+        getByTestId('days-of-week')
+          .textContent?.split(String.fromCharCode(8206))
+          .join('')
+      ).toBe(
+        [0, 1, 2, 3, 4, 5, 6]
+          .sort((a, b) => (a < weekStartsOn ? a + 7 : a) - (b < weekStartsOn ? b + 7 : b))
+          .map((n) => labels[n])
+          .join('')
+      )
+    })
+  })
+})
+
+describe('months', () => {
   it('should be month names.', () => {
     // With locale: 'en' because there is no way to test 'ja' locale on jsdom.
     const { getByTestId } = render(<Comp locale={'en'} />)
-    expect(getByTestId('months').textContent).toBe('JanFebMarAprMayJunJulAugSepOctNovDec')
+    // textContent on IE contains zero-width spaces.
+    expect(
+      getByTestId('months')
+        .textContent?.split(String.fromCharCode(8206))
+        .join('')
+    ).toBe('JanFebMarAprMayJunJulAugSepOctNovDec')
   })
 })
 
