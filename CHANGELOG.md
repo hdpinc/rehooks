@@ -1,3 +1,16 @@
+# [0.7.0](https://github.com/hdpinc/rehooks/compare/v0.6.0...v0.7.0) (2020-01-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency core-js to ^3.6.4 ([e67fe40](https://github.com/hdpinc/rehooks/commit/e67fe401df17afbc0b2ee7c52969b75a48acb542))
+
+
+### Features
+
+* add type field ([3035b86](https://github.com/hdpinc/rehooks/commit/3035b860a92de670b4fc1cc64d19b3199c4cda02))
+* **datepicker:** add weekStartsOn option ([84ac34c](https://github.com/hdpinc/rehooks/commit/84ac34c9f37d35845e3d7db76af259aa5d7b9122))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
