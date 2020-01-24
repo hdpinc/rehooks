@@ -36,7 +36,7 @@ jobs:
       - save_unix_yarn_cache
       - run:
           name: prettier
-          command: yarn prettier "*.js" "src/**/*" --check
+          command: yarn prettier "*.{js,json,ts,tsx,yml,md}" --check
       - run:
           name: eslint
           command: yarn lint
