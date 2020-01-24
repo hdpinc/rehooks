@@ -36,7 +36,7 @@ jobs:
       - save_unix_yarn_cache
       - run:
           name: prettier
-          command: yarn prettier
+          command: yarn prettier "*.js" "src/**/*" --check
       - run:
           name: eslint
           command: yarn lint
@@ -75,7 +75,7 @@ jobs:
       - install_yarn
       - save_unix_yarn_cache
       - run: yarn build
-      - run: npx semantic-release
+      - run: yarn semantic-release
 
 workflows:
   version: 2
