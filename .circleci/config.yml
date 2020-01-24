@@ -25,6 +25,25 @@ commands:
             - ~/AppData/Local/Yarn/Cache/v6
 
 jobs:
+  lint:
+    docker:
+      - image: node:12
+    steps:
+      - run: npm i -g yarn --force
+      - run: yarn cache dir
+      - checkout
+      - install_yarn
+      - save_unix_yarn_cache
+      - run:
+          name: prettier
+          command: yarn prettier
+      - run:
+          name: eslint
+          command: yarn lint
+      - run:
+          name: commitlint
+          command: yarn commitlint --from master --to HEAD --verbose
+
   jest:
     docker:
       - image: node:12
@@ -34,7 +53,6 @@ jobs:
       - checkout
       - install_yarn
       - save_unix_yarn_cache
-      - run: yarn lint
       - run: yarn jest
 
   karma:
@@ -63,10 +81,12 @@ workflows:
   version: 2
   build-test-and-deploy:
     jobs:
+      - lint
       - jest
       - karma
       - release:
           requires:
+            - lint
             - jest
             - karma
           filters:
