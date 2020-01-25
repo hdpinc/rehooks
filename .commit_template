@@ -1,0 +1,34 @@
+
+
+
+# ==== Format ====
+# type(scope): :emoji: Commit subject...
+#
+# Commit body...
+#
+# ==== Types ====
+# feat: new feature
+# fix: bug fix
+# docs: changes to documentation
+# style: formatting, missing semi colons, etc; no code change
+# refactor: refactoring production code
+# test: adding missing tests, refactoring tests; no production code change
+# perf: improving performance
+# build: changing build system or external dependencies or CI configuration files and scripts
+# chore: updating grunt tasks etc; no production code change
+# BREAKING CHANGE: breaking API change
+
+# ==== Emojis ====
+# 🎉 :tada: Initial commit
+# ✨ :sparkles: New feature
+# 🐛 :bug: Bug fix
+# 📚 :books: Documentation
+# 🐎 :racehorse: Performance
+# 🎨 :art: Code format
+# 🚨 :rotating_light: Tests
+# ♻️  :recycle: Refactor
+# 🔖 :bookmark: Version tags
+# 🔧 :wrench: Tooling
+# 🗑️ :wastebasket: Removal
+# 🚧 :construction: WIP
+

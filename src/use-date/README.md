@@ -1,6 +1,5 @@
 ## Usage
 
-
 ```tsx
 import { useDate } = '@jmdc/rehooks';
 
