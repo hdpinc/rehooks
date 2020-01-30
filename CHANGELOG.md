@@ -1,3 +1,10 @@
+# [0.8.0](https://github.com/hdpinc/rehooks/compare/v0.7.1...v0.8.0) (2020-01-30)
+
+
+### Features
+
+* **use-toggle:** :sparkles: allow set state ([f58c120](https://github.com/hdpinc/rehooks/commit/f58c12013731227937afd00c41e5d5900045825e))
+
 ## [0.7.1](https://github.com/hdpinc/rehooks/compare/v0.7.0...v0.7.1) (2020-01-30)
 
 
