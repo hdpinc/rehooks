@@ -1,3 +1,10 @@
+## [0.7.1](https://github.com/hdpinc/rehooks/compare/v0.7.0...v0.7.1) (2020-01-30)
+
+
+### Bug Fixes
+
+* **use-toggle:** :bug: export use-toggle ([a7583e4](https://github.com/hdpinc/rehooks/commit/a7583e4bcb547a851b78ab2ed837862b6973edf4))
+
 # [0.7.0](https://github.com/hdpinc/rehooks/compare/v0.6.0...v0.7.0) (2020-01-22)
 
 
