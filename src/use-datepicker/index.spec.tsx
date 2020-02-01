@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
+import { endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from 'date-fns'
 import { createEvent } from '../testing/utils'
 import useDatepicker, { UseDatepickerOptions } from './index'
 
@@ -179,10 +180,16 @@ describe('dateRows', () => {
   }
   it('should return array of dates of the target month.', () => {
     const { getDateRows } = setup({ value: '2020-01-01' })
-    expect(getDateRows().textContent).toBe('293031123456789101112131415161718192021222324252627282930311')
+    expect(getDateRows().textContent?.startsWith('' + startOfWeek(startOfMonth(new Date())).getDate())).toBe(true)
+    expect(getDateRows().textContent?.endsWith('' + endOfWeek(endOfMonth(new Date())).getDate())).toBe(true)
   })
   it('should handle isWithinInterval when both max and min are specified.', () => {
-    const { getIsWithinIntervalByDate } = setup({ value: '2020-01-01', min: '2020-01-01', max: '2020-01-15' })
+    const { getIsWithinIntervalByDate } = setup({
+      value: '2020-01-01',
+      min: '2020-01-01',
+      max: '2020-01-15',
+      defaultUiDate: new Date('2020-01'),
+    })
     expect(getIsWithinIntervalByDate('2019-12-31')).toBe('false')
     expect(getIsWithinIntervalByDate('2020-01-01')).toBe('true')
     expect(getIsWithinIntervalByDate('2020-01-15')).toBe('true')
@@ -191,6 +198,7 @@ describe('dateRows', () => {
   it('should handle isWithinInterval when max and min are Date instances.', () => {
     const { getIsWithinIntervalByDate } = setup({
       value: '2020-01-01',
+      defaultUiDate: new Date('2020-01'),
       min: new Date('2020-01-01'),
       max: new Date('2020-01-15'),
     })
@@ -200,14 +208,18 @@ describe('dateRows', () => {
     expect(getIsWithinIntervalByDate('2020-01-16')).toBe('false')
   })
   it('should handle isWithinInterval when only min is specified.', () => {
-    const { getIsWithinIntervalByDate } = setup({ value: '2020-01-01', min: '2020-01-01' })
+    const { getIsWithinIntervalByDate } = setup({
+      value: '2020-01-01',
+      min: '2020-01-01',
+      defaultUiDate: new Date('2020-01'),
+    })
     expect(getIsWithinIntervalByDate('2019-12-31')).toBe('false')
     expect(getIsWithinIntervalByDate('2020-01-01')).toBe('true')
     expect(getIsWithinIntervalByDate('2020-01-15')).toBe('true')
     expect(getIsWithinIntervalByDate('2020-01-16')).toBe('true')
   })
   it('should handle isWithinInterval when only max is specified.', () => {
-    const { getIsWithinIntervalByDate } = setup({ value: '2020-01-01', max: '2020-01-15' })
+    const { getIsWithinIntervalByDate } = setup({ value: '2020-01-01', max: '2020-01-15', defaultUiDate: '2020-01' })
     expect(getIsWithinIntervalByDate('2019-12-31')).toBe('true')
     expect(getIsWithinIntervalByDate('2020-01-01')).toBe('true')
     expect(getIsWithinIntervalByDate('2020-01-15')).toBe('true')
@@ -215,14 +227,16 @@ describe('dateRows', () => {
   })
 })
 
-it('defaultUiDate', () => {
-  const Comp = () => {
-    const { uiDate } = useDatepicker({
-      value: '',
-      defaultUiDate: '2019-01-01',
-    })
-    return <div data-testid={'ui-date'}>{uiDate.format('yyyy-MM')}</div>
-  }
-  const { getByTestId } = render(<Comp />)
-  expect(getByTestId('ui-date').textContent).toBe('2019-01')
+describe('defaultUiDate', () => {
+  it('use new Date() when defaultUiDate is not specified', () => {
+    const date = new Date()
+    const Comp = () => {
+      const { uiDate } = useDatepicker({
+        value: '',
+      })
+      return <div data-testid={'ui-date'}>{uiDate.format('yyyy-MM')}</div>
+    }
+    const { getByTestId } = render(<Comp />)
+    expect(getByTestId('ui-date').textContent).toBe(format(date, 'yyyy-MM'))
+  })
 })
