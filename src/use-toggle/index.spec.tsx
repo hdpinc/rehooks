@@ -27,6 +27,7 @@ it('toggle state', () => {
 it('set state', () => {
   const TestComponent: React.FC<{ initialValue: boolean }> = (props) => {
     const { initialValue } = props
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [state, toggle, set] = useToggle(initialValue)
     return (
       <div>
