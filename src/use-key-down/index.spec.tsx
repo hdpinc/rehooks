@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { createEvent } from '../testing/utils'
+import { createEvent } from '../../testing/utils'
 import useKeyDown from './index'
 
 const TestComponent: React.FC<{ pressKey: string }> = (props) => {
