@@ -1,9 +1,9 @@
-import { useCallback, useState } from 'react'
+import React from 'react'
 
 const useBool = (initialState: boolean): [boolean, () => void, () => void] => {
-  const [state, setState] = useState(initialState)
-  const turnOn = useCallback(() => setState(true), [])
-  const turnOff = useCallback(() => setState(false), [])
+  const [state, setState] = React.useState(initialState)
+  const turnOn = () => setState(true)
+  const turnOff = () => setState(false)
   return [state, turnOn, turnOff]
 }
 
