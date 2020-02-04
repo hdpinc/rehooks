@@ -1,6 +1,5 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { createEvent } from '../testing/utils'
 import useKeyDown from './index'
 
 const TestComponent: React.FC<{ pressKey: string }> = (props) => {
@@ -18,16 +17,12 @@ const TestComponent: React.FC<{ pressKey: string }> = (props) => {
 
 it('handler should be called when Esc keydown.', () => {
   const { getByTestId } = render(<TestComponent pressKey={'Esc'} />)
-  const event = createEvent('keydown', { bubbles: true })
-  event.key = 'Esc'
-  fireEvent(window, event)
+  fireEvent.keyDown(window, { key: 'Esc' })
   expect(getByTestId('state').textContent).toBe('on')
 })
 
 it('handler should not be called when another key keydown.', () => {
   const { getByTestId } = render(<TestComponent pressKey={'Esc'} />)
-  const event = createEvent('keydown', { bubbles: true })
-  event.key = 'Ctrl'
-  fireEvent(window, event)
+  fireEvent.keyDown(window, { key: 'Ctrl' })
   expect(getByTestId('state').textContent).toBe('off')
 })

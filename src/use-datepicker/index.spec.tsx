@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
 import { endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from 'date-fns'
-import { createEvent } from '../testing/utils'
 import useDatepicker, { UseDatepickerOptions } from './index'
 
 const Comp: React.FC<Partial<UseDatepickerOptions>> = (props) => {
@@ -71,17 +70,17 @@ const Comp: React.FC<Partial<UseDatepickerOptions>> = (props) => {
 describe('mode', () => {
   it(`enter date mode`, () => {
     const { getByTestId } = render(<Comp />)
-    fireEvent(getByTestId('date'), createEvent('click', { bubbles: true }))
+    fireEvent.click(getByTestId('date'))
     expect(getByTestId('mode').textContent).toBe('date')
   })
   it(`enter month mode`, () => {
     const { getByTestId } = render(<Comp />)
-    fireEvent(getByTestId('month'), createEvent('click', { bubbles: true }))
+    fireEvent.click(getByTestId('month'))
     expect(getByTestId('mode').textContent).toBe('month')
   })
   it(`enter year mode`, () => {
     const { getByTestId } = render(<Comp />)
-    fireEvent(getByTestId('year'), createEvent('click', { bubbles: true }))
+    fireEvent.click(getByTestId('year'))
     expect(getByTestId('mode').textContent).toBe('year')
   })
 })
@@ -140,7 +139,7 @@ describe('years', () => {
   })
   it('', () => {
     const { getByTestId } = render(<Comp value={'2020-01-01'} />)
-    fireEvent(getByTestId('set-year'), createEvent('click', { bubbles: true }))
+    fireEvent.click(getByTestId('set-year'))
     expect(getByTestId('years').textContent).toBe('2030203120322033203420352036203720382039')
   })
 })
@@ -148,21 +147,21 @@ describe('years', () => {
 describe('isOpen', () => {
   it('should be true after calling "open".', () => {
     const { getByTestId } = render(<Comp />)
-    fireEvent(getByTestId('open'), createEvent('click', { bubbles: true }))
+    fireEvent.click(getByTestId('open'))
     expect(getByTestId('is-open').textContent).toBe('open')
   })
   it('should be false after calling "close".', () => {
     const { getByTestId } = render(<Comp />)
-    fireEvent(getByTestId('open'), createEvent('click', { bubbles: true }))
-    fireEvent(getByTestId('close'), createEvent('click', { bubbles: true }))
+    fireEvent.click(getByTestId('open'))
+    fireEvent.click(getByTestId('close'))
     expect(getByTestId('is-open').textContent).toBe('close')
   })
   it('should be toggled after calling "toggle".', () => {
     const { getByTestId } = render(<Comp />)
     expect(getByTestId('is-open').textContent).toBe('close')
-    fireEvent(getByTestId('toggle'), createEvent('click', { bubbles: true }))
+    fireEvent.click(getByTestId('toggle'))
     expect(getByTestId('is-open').textContent).toBe('open')
-    fireEvent(getByTestId('toggle'), createEvent('click', { bubbles: true }))
+    fireEvent.click(getByTestId('toggle'))
     expect(getByTestId('is-open').textContent).toBe('close')
   })
 })
