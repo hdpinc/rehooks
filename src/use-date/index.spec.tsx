@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import useDate from './index'
 
 const setup = (options: { date: string; amount?: number }) => {

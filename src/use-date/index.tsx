@@ -57,7 +57,11 @@ const normalizeDate = (date: DateLike): Date => {
   return typeof date === 'string' ? parseISO(date) : new Date(date)
 }
 
-const useDate = (initialDate: DateLike, options?: UseDateOptions): UseDateReturn => {
+const useDate = (
+  initialDate: DateLike,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  options?: UseDateOptions
+): UseDateReturn => {
   const [date, update] = React.useState(normalizeDate(initialDate))
 
   return {
