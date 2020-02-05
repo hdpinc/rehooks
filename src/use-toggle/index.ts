@@ -1,10 +1,16 @@
 import React from 'react'
 
-const useToggle = (initialState: boolean): [boolean, () => void, (state: boolean) => void] => {
+const useToggle = (initialState: boolean): [boolean, (state?: unknown) => void] => {
   const [state, setState] = React.useState(initialState)
-  const toggle = () => setState((state) => !state)
-  const set = (override: boolean) => setState(override)
-  return [state, toggle, set]
+  const toggle = (nextState?: unknown) =>
+    setState((state) => {
+      if (typeof nextState === 'boolean') {
+        return nextState
+      } else {
+        return !state
+      }
+    })
+  return [state, toggle]
 }
 
 export default useToggle
