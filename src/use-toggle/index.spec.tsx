@@ -28,14 +28,14 @@ it('set state', () => {
   const TestComponent: React.FC<{ initialValue: boolean }> = (props) => {
     const { initialValue } = props
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [state, toggle, set] = useToggle(initialValue)
+    const [state, toggle] = useToggle(initialValue)
     return (
       <div>
         <span data-testid={'state'}>{state ? 'on' : 'off'}</span>
-        <button onClick={() => set(true)} data-testid={'on'}>
+        <button onClick={() => toggle(true)} data-testid={'on'}>
           on
         </button>
-        <button onClick={() => set(false)} data-testid={'off'}>
+        <button onClick={() => toggle(false)} data-testid={'off'}>
           off
         </button>
       </div>
