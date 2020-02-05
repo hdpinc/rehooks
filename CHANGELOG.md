@@ -1,3 +1,13 @@
+# [1.0.0](https://github.com/hdpinc/rehooks/compare/v0.9.1...v1.0.0) (2020-02-05)
+
+
+* feat(use-toggle)!: :boom: removed the third item ([733c58f](https://github.com/hdpinc/rehooks/commit/733c58f6dc35460ec5b67a0a3f296eb8e7def115))
+
+
+### BREAKING CHANGES
+
+* Now the second item can set the state explicitly, and thus the third item is removed.
+
 ## [0.9.1](https://github.com/hdpinc/rehooks/compare/v0.9.0...v0.9.1) (2020-02-05)
 
 
