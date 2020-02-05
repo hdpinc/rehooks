@@ -1,3 +1,10 @@
+# [0.9.0](https://github.com/hdpinc/rehooks/compare/v0.8.0...v0.9.0) (2020-02-05)
+
+
+### Features
+
+* **use-date:** add helpers ([a47fc54](https://github.com/hdpinc/rehooks/commit/a47fc548d412708f333a2882e8eb17a06474124d))
+
 # [0.8.0](https://github.com/hdpinc/rehooks/compare/v0.7.1...v0.8.0) (2020-01-30)
 
 
