@@ -1,3 +1,10 @@
+## [0.9.1](https://github.com/hdpinc/rehooks/compare/v0.9.0...v0.9.1) (2020-02-05)
+
+
+### Bug Fixes
+
+* :wrench: don't wrap with React.useCallback ([c284fe5](https://github.com/hdpinc/rehooks/commit/c284fe56bf0ff8feae87a34a8d28f4e46441210e))
+
 # [0.9.0](https://github.com/hdpinc/rehooks/compare/v0.8.0...v0.9.0) (2020-02-05)
 
 
