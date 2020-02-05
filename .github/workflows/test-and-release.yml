@@ -3,8 +3,15 @@ name: test-and-release
 on: [push]
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - run: echo "${{ github.event.head_commit.message }}"
+
   lint-and-jest:
     runs-on: ubuntu-latest
+    needs: prepare
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -36,6 +43,7 @@ jobs:
         run: yarn jest
   karma-linux:
     runs-on: ubuntu-latest
+    needs: prepare
     strategy:
       matrix:
         browser: [chrome, firefox]
@@ -63,6 +71,7 @@ jobs:
       - run: yarn karma:${{ matrix.browser }}
   karma-win:
     runs-on: windows-latest
+    needs: prepare
     strategy:
       matrix:
         browser: [ie]
@@ -117,5 +126,5 @@ jobs:
       - name: release
         run: yarn semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_WITH_WRITE_PERMISSION }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
