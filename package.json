@@ -28,7 +28,7 @@
     "build:js": "cross-env BABEL_ENV=production babel src -d dist --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx'",
     "build:types": "tsc -p tsconfig.types.json",
     "clean": "rimraf dist",
-    "jest": "TZ=Asia/Tokyo jest --verbose --color",
+    "jest": "TZ=Asia/Tokyo jest --verbose --color --coverage",
     "karma": "karma start",
     "karma:chrome": "karma start --single-run --browsers ChromeHeadless",
     "karma:firefox": "karma start --single-run --browsers FirefoxHeadless",

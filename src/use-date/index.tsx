@@ -20,10 +20,6 @@ export type UseDateOptions = {}
 
 export type DateLike = Date | string | number
 
-const MILLISECONDS_IN_HOUR = 60 * 60 * 1000
-const MILLISECONDS_IN_MINUTE = 60 * 1000
-const MILLISECONDS_IN_SECOND = 60
-
 export type UseDateReturn = {
   date: Date
 
@@ -50,6 +46,9 @@ export type UseDateReturn = {
   setMonth: (month: number) => void
   setDay: (day: number) => void
   setHours: (hours: number, minutes?: number, seconds?: number, milliseconds?: number) => void
+  setMinutes: (minutes: number, seconds?: number, milliseconds?: number) => void
+  setSeconds: (seconds: number, milliseconds?: number) => void
+  setMilliSeconds: (milliseconds: number) => void
   format: (format: string) => string
 }
 
@@ -114,17 +113,17 @@ const useDate = (
     setDay: (amount: number) => {
       update((date) => setDate(date, amount))
     },
-    setHours: (hours: number, minutes?: number, seconds?: number, milliseconds?: number) => {
-      update(
-        (date) =>
-          new Date(
-            date.getTime() +
-              hours * MILLISECONDS_IN_HOUR +
-              (minutes ?? 0) * MILLISECONDS_IN_MINUTE +
-              (seconds ?? 0) * MILLISECONDS_IN_SECOND +
-              (milliseconds ?? 0)
-          )
-      )
+    setHours: (hours: number, ...rest) => {
+      update((date) => new Date(new Date(date).setHours(hours, ...rest)))
+    },
+    setMinutes: (minutes: number, ...rest) => {
+      update((date) => new Date(new Date(date).setMinutes(minutes, ...rest)))
+    },
+    setSeconds: (seconds: number, ...rest) => {
+      update((date) => new Date(new Date(date).setSeconds(seconds, ...rest)))
+    },
+    setMilliSeconds: (milliseconds: number) => {
+      update((date) => new Date(new Date(date).setMilliseconds(milliseconds)))
     },
   }
 }
