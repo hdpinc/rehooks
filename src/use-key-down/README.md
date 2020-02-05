@@ -1,7 +1,7 @@
 ## Usage
 
 ```tsx
-import { useKeyDown } = '@jmdc/rehooks';
+import { useKeyDown } from '@jmdc/rehooks'
 import React from 'react'
 
 const TestComponent = () => {
