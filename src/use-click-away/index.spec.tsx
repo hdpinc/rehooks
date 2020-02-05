@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react'
 import React from 'react'
-import { createEvent } from '../testing/utils'
+import { createEvent } from '../../testing/utils'
 import useClickAway from './index'
 
 const Comp: React.FC<{ handler: () => void }> = ({ handler }) => {
