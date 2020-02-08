@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/hdpinc/rehooks/compare/v1.0.0...v1.1.0) (2020-02-08)
+
+
+### Features
+
+* :sparkles: enable tree shaking ([db54b87](https://github.com/hdpinc/rehooks/commit/db54b870d9b4466b4eddc3d874abbe290682fe89))
+
 # [1.0.0](https://github.com/hdpinc/rehooks/compare/v0.9.1...v1.0.0) (2020-02-05)
 
 
