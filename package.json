@@ -9,25 +9,29 @@
   "bugs": {
     "url": "https://github.com/hdpinc/rehooks/issues"
   },
+  "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
   "engines": {
     "node": ">=10.0.0"
   },
   "files": [
     "package.json",
-    "dist",
+    "lib",
+    "esm",
     "LICENSE",
     "README.md"
   ],
   "scripts": {
-    "build": "yarn run build:js && yarn run build:types",
-    "build:js": "cross-env BABEL_ENV=production babel src -d dist --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx'",
-    "build:types": "tsc -p tsconfig.types.json",
-    "clean": "rimraf dist",
+    "build": "yarn build:cjs && yarn build:esm && yarn build:types",
+    "build:cjs": "cross-env BABEL_ENV=production babel src -d lib --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx'",
+    "build:esm": "cross-env BABEL_ENV=production babel src -d esm --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx' --config-file ./.babelrc.esm.js",
+    "build:types": "tsc -p tsconfig.types.json --outDir lib && tsc -p tsconfig.types.json --outDir esm",
+    "clean": "rimraf lib && rimraf esm",
     "jest": "TZ=Asia/Tokyo jest --verbose --color --coverage",
     "karma": "karma start",
     "karma:chrome": "karma start --single-run --browsers ChromeHeadless",
@@ -37,7 +41,8 @@
     "karma:safari": "karma start --single-run --browsers Safari",
     "lint": "eslint . --ext '.js,.ts,.tsx'",
     "prebuild": "yarn clean",
-    "prepare": "yarn build"
+    "prepare": "yarn build",
+    "test": "yarn jest"
   },
   "peerDependencies": {
     "react": ">=16.8",

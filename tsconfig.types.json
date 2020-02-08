@@ -3,7 +3,6 @@
   "include": ["src"],
   "exclude": ["**/*.spec.tsx", "**/*.spec.ts", "**/*.stories.tsx"],
   "compilerOptions": {
-    "outDir": "dist",
     "declaration": true,
     "declarationMap": false,
     "emitDeclarationOnly": true,
