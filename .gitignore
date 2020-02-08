@@ -22,4 +22,5 @@ coverage/
 
 .env
 
-/dist/
+/lib/
+/esm/

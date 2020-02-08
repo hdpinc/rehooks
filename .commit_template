@@ -25,10 +25,11 @@
 # 📚 :books: Documentation
 # 🐎 :racehorse: Performance
 # 🎨 :art: Code format
-# 🚨 :rotating_light: Tests
+# 💚 :green_heart: Tests
 # ♻️  :recycle: Refactor
 # 🔖 :bookmark: Version tags
-# 🔧 :wrench: Tooling
+# 🔧 :wrench: Configuration files
 # 🗑️ :wastebasket: Removal
 # 🚧 :construction: WIP
 # 💥 :boom: Breaking changes
+# 📦 :package: Package update
