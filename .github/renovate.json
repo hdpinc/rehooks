@@ -6,7 +6,7 @@
   "rangeStrategy": "bump",
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": ["before 3am on the first day of the month"]
+    "schedule": ["after 9am on sunday"]
   },
   "automerge": true,
   "major": {
