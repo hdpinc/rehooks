@@ -42,7 +42,8 @@
     "lint": "eslint . --ext '.js,.ts,.tsx'",
     "prebuild": "yarn clean",
     "prepare": "yarn build",
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "typecheck": "tsc -p tsconfig.types.json --noEmit --emitDeclarationOnly false"
   },
   "peerDependencies": {
     "react": ">=16.8",
