@@ -41,6 +41,9 @@ jobs:
           name: eslint
           command: yarn lint
       - run:
+          name: typecheck
+          command: yarn typecheck
+      - run:
           name: commitlint
           command: yarn commitlint --from master --to HEAD --verbose
       - run:
