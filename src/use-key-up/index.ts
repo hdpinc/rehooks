@@ -8,10 +8,10 @@ const useKeyUp = (key: string, onKeyUp?: () => void) => {
       }
     }
 
-    window.addEventListener('keydown', listener)
+    window.addEventListener('keyup', listener)
 
     return () => {
-      window.removeEventListener('keydown', listener)
+      window.removeEventListener('keyup', listener)
     }
   }, [key, onKeyUp])
 }
