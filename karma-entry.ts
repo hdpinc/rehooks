@@ -1,4 +1,3 @@
-// Polyfill for 3rd-party codes
 // ===============================
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
@@ -16,6 +15,6 @@ if (!Element.prototype.matches) {
   Element.prototype.matches = (Element.prototype as any).msMatchesSelector
 }
 
-const testsContext = require.context('./src/', true, /.*spec\.tsx?$/)
+const testsContext = require.context('./src/', true, /.*\.spec\.tsx?$/)
 
 testsContext.keys().forEach(testsContext)
