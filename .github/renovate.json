@@ -18,8 +18,9 @@
       "enabled": false
     },
     {
-      "groupName": "Dev dependencies",
-      "depTypeList": ["devDependencies"]
+      "depTypeList": ["devDependencies"],
+      "updateTypes": ["patch", "minor"],
+      "groupName": "Dev dependencies (non-major)"
     },
     {
       "groupName": "react",
