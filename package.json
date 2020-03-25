@@ -96,7 +96,7 @@
     "karma-safari-launcher": "^1.0.0",
     "karma-webpack": "^4.0.2",
     "lint-staged": "^10.0.9",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.2",
     "react-test-renderer": "^16.13.1",
     "regenerator-runtime": "^0.13.5",
     "rimraf": "^3.0.2",
