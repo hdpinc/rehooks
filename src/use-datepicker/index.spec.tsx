@@ -91,11 +91,9 @@ describe('daysOfWeek', () => {
     // With locale: 'en' because there is no way to test 'ja' locale on jsdom.
     const { getByTestId } = render(<Comp locale={'en'} />)
     // textContent on IE contains zero-width spaces.
-    expect(
-      getByTestId('days-of-week')
-        .textContent?.split(String.fromCharCode(8206))
-        .join('')
-    ).toBe('SunMonTueWedThuFriSat')
+    expect(getByTestId('days-of-week').textContent?.split(String.fromCharCode(8206)).join('')).toBe(
+      'SunMonTueWedThuFriSat'
+    )
   })
 })
 
@@ -106,11 +104,7 @@ describe('weekStartsOn', () => {
       // With locale: 'en' because there is no way to test 'ja' locale on jsdom.
       const { getByTestId } = render(<Comp locale={'en'} weekStartsOn={weekStartsOn} />)
       // textContent on IE contains zero-width spaces.
-      expect(
-        getByTestId('days-of-week')
-          .textContent?.split(String.fromCharCode(8206))
-          .join('')
-      ).toBe(
+      expect(getByTestId('days-of-week').textContent?.split(String.fromCharCode(8206)).join('')).toBe(
         [0, 1, 2, 3, 4, 5, 6]
           .sort((a, b) => (a < weekStartsOn ? a + 7 : a) - (b < weekStartsOn ? b + 7 : b))
           .map((n) => labels[n])
@@ -125,11 +119,9 @@ describe('months', () => {
     // With locale: 'en' because there is no way to test 'ja' locale on jsdom.
     const { getByTestId } = render(<Comp locale={'en'} />)
     // textContent on IE contains zero-width spaces.
-    expect(
-      getByTestId('months')
-        .textContent?.split(String.fromCharCode(8206))
-        .join('')
-    ).toBe('JanFebMarAprMayJunJulAugSepOctNovDec')
+    expect(getByTestId('months').textContent?.split(String.fromCharCode(8206)).join('')).toBe(
+      'JanFebMarAprMayJunJulAugSepOctNovDec'
+    )
   })
 })
 
