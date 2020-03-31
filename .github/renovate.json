@@ -24,7 +24,7 @@
     },
     {
       "groupName": "react",
-      "packageNames": ["react", "react-dom"]
+      "packageNames": ["react", "react-dom", "react-test-renderer"]
     }
   ]
 }
