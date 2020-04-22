@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react'
-import React from 'react'
 import { endOfMonth, endOfWeek, format, startOfMonth, startOfWeek } from 'date-fns'
+import React from 'react'
 import { createEvent } from '../../testing/utils'
 import useDatepicker, { UseDatepickerOptions } from './index'
 
