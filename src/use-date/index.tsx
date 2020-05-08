@@ -13,7 +13,19 @@
  *
  */
 
-import { addMonths, addYears, format, parseISO, setDate, setMonth, setYear, subMonths, subYears } from 'date-fns'
+import {
+  addMonths,
+  addYears,
+  addDays,
+  format,
+  parseISO,
+  setDate,
+  setMonth,
+  setYear,
+  subMonths,
+  subYears,
+  subDays,
+} from 'date-fns'
 import React from 'react'
 
 export type UseDateOptions = {}
@@ -42,6 +54,10 @@ export type UseDateReturn = {
   addMonths: (amount: number) => void
   subMonth: () => void
   subMonths: (amount: number) => void
+  addDay: () => void
+  addDays: (amount: number) => void
+  subDay: () => void
+  subDays: (amount: number) => void
   setYear: (year: number) => void
   setMonth: (month: number) => void
   setDay: (day: number) => void
@@ -100,6 +116,18 @@ const useDate = (
     },
     subMonths: (amount: number) => {
       update((date) => subMonths(date, amount))
+    },
+    addDay: () => {
+      update((date) => addDays(date, 1))
+    },
+    addDays: (amount: number) => {
+      update((date) => addDays(date, amount))
+    },
+    subDay: () => {
+      update((date) => subDays(date, 1))
+    },
+    subDays: (amount: number) => {
+      update((date) => subDays(date, amount))
     },
     format: (fmt: string) => {
       return format(date, fmt)

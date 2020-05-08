@@ -30,11 +30,33 @@ describe('methods', () => {
     { date, method: 'setHours' as const, amount: 3, expected: '2020-01-01 03:02:03' },
     { date, method: 'setMinutes' as const, amount: 4, expected: '2020-01-01 01:04:03' },
     { date, method: 'setSeconds' as const, amount: 5, expected: '2020-01-01 01:02:05' },
+    { date, method: 'addDays' as const, amount: 6, expected: '2020-01-07 01:02:03' },
+    { date, method: 'subDays' as const, amount: 6, expected: '2019-12-26 01:02:03' },
+    { date, method: 'addMonths' as const, amount: 7, expected: '2020-08-01 01:02:03' },
+    { date, method: 'subMonths' as const, amount: 7, expected: '2019-06-01 01:02:03' },
+    { date, method: 'addYears' as const, amount: 8, expected: '2028-01-01 01:02:03' },
+    { date, method: 'subYears' as const, amount: 8, expected: '2012-01-01 01:02:03' },
   ].forEach(({ date, method, amount, expected }) => {
-    it(date, () => {
+    it(method, () => {
       const { result } = renderHook(() => useDate(date))
       act(() => {
         result.current[method](amount)
+      })
+      expect(result.current.format(format)).toBe(expected)
+    })
+  })
+  ;[
+    { date, method: 'addDay' as const, expected: '2020-01-02 01:02:03' },
+    { date, method: 'subDay' as const, expected: '2019-12-31 01:02:03' },
+    { date, method: 'addMonth' as const, expected: '2020-02-01 01:02:03' },
+    { date, method: 'subMonth' as const, expected: '2019-12-01 01:02:03' },
+    { date, method: 'addYear' as const, expected: '2021-01-01 01:02:03' },
+    { date, method: 'subYear' as const, expected: '2019-01-01 01:02:03' },
+  ].forEach(({ date, method, expected }) => {
+    it(method, () => {
+      const { result } = renderHook(() => useDate(date))
+      act(() => {
+        result.current[method]()
       })
       expect(result.current.format(format)).toBe(expected)
     })
