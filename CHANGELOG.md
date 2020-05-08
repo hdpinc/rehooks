@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/hdpinc/rehooks/compare/v1.1.6...v1.2.0) (2020-05-08)
+
+
+### Features
+
+* **use-date:** add methos operating days ([fa71c05](https://github.com/hdpinc/rehooks/commit/fa71c054e914cf58b77027030ab9b45252ee83fe))
+
 ## [1.1.6](https://github.com/hdpinc/rehooks/compare/v1.1.5...v1.1.6) (2020-04-15)
 
 
