@@ -1,5 +1,10 @@
 import { act, renderHook } from '@testing-library/react-hooks'
+import localStorage from './localStorage'
 import useLocalStorage from './index'
+
+afterEach(() => {
+  localStorage.clear()
+})
 
 it('should return initial value', () => {
   const { result } = renderHook(() => useLocalStorage('key', ''))
