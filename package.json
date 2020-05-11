@@ -87,6 +87,7 @@
     "husky": "^4.2.5",
     "jasmine": "^3.5.0",
     "jest": "^25.5.1",
+    "jest-mock": "^26.0.1",
     "karma": "^5.0.2",
     "karma-chrome-launcher": "^3.1.0",
     "karma-edge-launcher": "^0.4.2",
