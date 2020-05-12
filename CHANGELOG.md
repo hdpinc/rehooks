@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/hdpinc/rehooks/compare/v1.2.0...v1.3.0) (2020-05-12)
+
+
+### Features
+
+* **use-local-storage:** :sparkles: add useLocalStorage ([#266](https://github.com/hdpinc/rehooks/issues/266)) ([771de6c](https://github.com/hdpinc/rehooks/commit/771de6ca17166ff0ef9d943e8dcbe73a2cdf7ba7))
+
 # [1.2.0](https://github.com/hdpinc/rehooks/compare/v1.1.6...v1.2.0) (2020-05-08)
 
 
