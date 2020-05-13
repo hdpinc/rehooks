@@ -18,18 +18,20 @@
       "enabled": false
     },
     {
+      "depTypeList": ["devDependencies"],
+      "updateTypes": ["patch", "minor"],
+      "groupName": "devDependencies (non-major)",
+      "groupSlug": "dev-dependencies",
+      "excludePackagePatterns": ["^@jmdc/eslint-config-", "^@typescript-eslint/", "^eslint"],
+      "excludePackageNames": ["react-test-renderer"]
+    },
+    {
       "groupName": "eslint",
       "packagePatterns": ["^@jmdc/eslint-config-", "^@typescript-eslint/", "^eslint"]
     },
     {
       "groupName": "react",
       "packageNames": ["react", "react-dom", "react-test-renderer"]
-    },
-    {
-      "depTypeList": ["devDependencies"],
-      "updateTypes": ["patch", "minor"],
-      "groupName": "devDependencies (non-major)",
-      "groupSlug": "dev-dependencies"
     }
   ]
 }
