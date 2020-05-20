@@ -50,7 +50,7 @@
     "react-dom": ">=16.8"
   },
   "dependencies": {
-    "date-fns": "^2.13.0",
+    "date-fns": "^2.14.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
