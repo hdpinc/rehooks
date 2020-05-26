@@ -3,91 +3,59 @@ import useArray from './index'
 
 const init = ['1', 'abc', 1, 34, undefined, null]
 
-it('handle value', () => {
+it('toggle', () => {
   const { result } = renderHook(() => useArray(init))
 
   // remove '1'
-  expect(result.current.state.includes('1')).toBe(true)
+  expect(result.current.state).toEqual(init)
   act(() => {
-    result.current.handleValue('1')
+    result.current.toggle('1')
   })
-  expect(result.current.state.length).toBe(5)
-  ;['abc', 1, 34, undefined, null].map((v) => {
-    expect(result.current.state.includes(v)).toBe(true)
-  })
-  expect(result.current.state.includes('1')).toBe(false)
+  expect(result.current.state).toEqual(['abc', 1, 34, undefined, null])
 
   // remove 1
-  expect(result.current.state.includes(1)).toBe(true)
   act(() => {
-    result.current.handleValue(1)
+    result.current.toggle(1)
   })
-  expect(result.current.state.length).toBe(4)
-  ;['abc', 34, undefined, null].map((v) => {
-    expect(result.current.state.includes(v)).toBe(true)
-  })
-  expect(result.current.state.includes(1)).toBe(false)
+  expect(result.current.state).toEqual(['abc', 34, undefined, null])
 
   // remove null
-  expect(result.current.state.includes(null)).toBe(true)
   act(() => {
-    result.current.handleValue(null)
+    result.current.toggle(null)
   })
-  expect(result.current.state.length).toBe(3)
-  ;['abc', undefined, 34].map((v) => {
-    expect(result.current.state.includes(v)).toBe(true)
-  })
-  expect(result.current.state.includes(null)).toBe(false)
+  expect(result.current.state).toEqual(['abc', 34, undefined])
 
   // add 1
-  expect(result.current.state.includes(1)).toBe(false)
   act(() => {
-    result.current.handleValue(1)
+    result.current.toggle(1)
   })
-  expect(result.current.state.length).toBe(4)
-  ;['abc', 34, undefined, 1].map((v) => {
-    expect(result.current.state.includes(v)).toBe(true)
-  })
-  expect(result.current.state.includes(1)).toBe(true)
+  expect(result.current.state).toEqual(['abc', 34, undefined, 1])
 
   // remove undefined
-  expect(result.current.state.includes(undefined)).toBe(true)
   act(() => {
-    result.current.handleValue(undefined)
+    result.current.toggle(undefined)
   })
-  expect(result.current.state.length).toBe(3)
-  ;['abc', 34, 1].map((v) => {
-    expect(result.current.state.includes(v)).toBe(true)
-    expect(result.current.state.includes(undefined)).toBe(false)
-  })
+  expect(result.current.state).toEqual(['abc', 34, 1])
 
   // add null
-  expect(result.current.state.includes(null)).toBe(false)
   act(() => {
-    result.current.handleValue(null)
+    result.current.toggle(null)
   })
-  expect(result.current.state.length).toBe(4)
-  ;['abc', 34, 1, null].map((v) => {
-    expect(result.current.state.includes(v)).toBe(true)
-  })
-  expect(result.current.state.includes(null)).toBe(true)
+  expect(result.current.state).toEqual(['abc', 34, 1, null])
 })
 
-it('delete all and reset', () => {
+it('clear and reset', () => {
   const { result } = renderHook(() => useArray(init))
 
-  // deleteAll
+  // clear
   act(() => {
-    result.current.deleteAll()
+    result.current.clear()
   })
-  expect(result.current.state.length).toBe(0)
+  expect(result.current.state).toEqual([])
 
   // reset
   act(() => {
     result.current.reset()
   })
-  expect(result.current.state.length).toBe(6)
-  init.map((v) => {
-    expect(result.current.state.includes(v)).toBe(true)
-  })
+  expect(result.current.state).toEqual(init)
 })

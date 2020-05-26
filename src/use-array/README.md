@@ -6,7 +6,7 @@ import React from 'react'
 
 const TestComponent = () => {
   const init = ['a', 'b', 'c', 1, 2, 3, undefined, null]
-  const { state, handleValue, reset, deleteAll } = useArray([init])
+  const { state, toggle, reset, clear } = useArray([init])
 
   return (
     <div>
@@ -17,7 +17,7 @@ const TestComponent = () => {
             <span
               key={index}
               onClick={() => {
-                handleValue(value)
+                toggle(value)
               }}
             >
               {value}
@@ -25,7 +25,7 @@ const TestComponent = () => {
           ))}
       </div>
       <button onClick={reset}>reset</button>
-      <button onClick={deleteAll}>deleteAll</button>
+      <button onClick={clear}>clear</button>
     </div>
   )
 }

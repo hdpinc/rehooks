@@ -2,10 +2,10 @@ import React from 'react'
 
 const useArray = <T extends any>(
   initialState: T[]
-): { state: T[]; handleValue: (value: T) => void; reset: () => void; deleteAll: () => void } => {
+): { state: T[]; toggle: (value: T) => void; reset: () => void; clear: () => void } => {
   const [state, setState] = React.useState<T[]>(initialState)
 
-  const handleValue = (value: T) => {
+  const toggle = (value: T) => {
     setState((prev) => {
       const cur = [...prev]
 
@@ -22,11 +22,11 @@ const useArray = <T extends any>(
     setState(initialState)
   }
 
-  const deleteAll = () => {
+  const clear = () => {
     setState([])
   }
 
-  return { state, handleValue, reset, deleteAll }
+  return { state, toggle, reset, clear }
 }
 
 export default useArray
