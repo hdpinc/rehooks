@@ -1,3 +1,4 @@
+import useArray from './use-array'
 import useBool from './use-bool'
 import useClickAway from './use-click-away'
 import useDate from './use-date'
@@ -6,4 +7,4 @@ import useKeyDown from './use-key-down'
 import useKeyUp from './use-key-up'
 import useToggle from './use-toggle'
 
-export { useBool, useClickAway, useDate, useDatepicker, useKeyDown, useKeyUp, useToggle }
+export { useArray, useBool, useClickAway, useDate, useDatepicker, useKeyDown, useKeyUp, useToggle }

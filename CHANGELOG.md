@@ -1,3 +1,23 @@
+## [1.4.1](https://github.com/hdpinc/rehooks/compare/v1.4.0...v1.4.1) (2020-05-26)
+
+
+### Bug Fixes
+
+* export useArray ([2d2fbd5](https://github.com/hdpinc/rehooks/commit/2d2fbd5b7549484f87d1f8ba1ebaad97a9472c06))
+* update README ([0f11e23](https://github.com/hdpinc/rehooks/commit/0f11e233930254d7821ab2049cede344e0459854))
+
+# [1.4.0](https://github.com/hdpinc/rehooks/compare/v1.3.2...v1.4.0) (2020-05-26)
+
+
+### Bug Fixes
+
+* reflect reviews ([2514dd1](https://github.com/hdpinc/rehooks/commit/2514dd13f72b20a31674f1a65b9c6dec5f3be4a6))
+
+
+### Features
+
+* add use-array ([547da5a](https://github.com/hdpinc/rehooks/commit/547da5a20e1d064a940663fb5a04892216f69b04))
+
 ## [1.3.2](https://github.com/hdpinc/rehooks/compare/v1.3.1...v1.3.2) (2020-05-20)
 
 
