@@ -3,6 +3,7 @@
 
 ## Hooks
 
+- [useArray](https://github.com/hdpinc/rehooks/tree/master/src/use-array)
 - [useBool](https://github.com/hdpinc/rehooks/tree/master/src/use-bool)
 - [useToggle](https://github.com/hdpinc/rehooks/tree/master/src/use-toggle)
 - [useClickAway](https://github.com/hdpinc/rehooks/tree/master/src/use-click-away)
