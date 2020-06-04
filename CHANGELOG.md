@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/hdpinc/rehooks/compare/v1.4.1...v1.4.2) (2020-06-04)
+
+
+### Bug Fixes
+
+* add useLocalStorage to index ([6d5a843](https://github.com/hdpinc/rehooks/commit/6d5a843b30de1e6fdcdc97c7d26e3f106ffde1b2))
+
 ## [1.4.1](https://github.com/hdpinc/rehooks/compare/v1.4.0...v1.4.1) (2020-05-26)
 
 
