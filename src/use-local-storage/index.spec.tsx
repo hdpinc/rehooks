@@ -22,7 +22,7 @@ it('should return stored value if one exists instead of initial value', () => {
 describe('set', () => {
   it('should update value', () => {
     const { result } = renderHook(() => useLocalStorage('key', ''))
-    const [_, setState] = result.current
+    const [, setState] = result.current
     act(() => {
       setState('updated')
     })
