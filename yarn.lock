@@ -1777,7 +1777,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@^3.0.2", "@typescript-eslint/eslint-plugin@^3.1.0":
+"@typescript-eslint/eslint-plugin@^3.0.2", "@typescript-eslint/eslint-plugin@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-3.2.0.tgz#7fb997f391af32ae6ca1dbe56bcefe4dd30bda14"
   integrity sha512-t9RTk/GyYilIXt6BmZurhBzuMT9kLKw3fQoJtK9ayv0tXTlznXEAnx07sCLXdkN3/tZDep1s1CEV95CWuARYWA==
@@ -1798,7 +1798,7 @@
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
-"@typescript-eslint/parser@^3.0.2", "@typescript-eslint/parser@^3.1.0":
+"@typescript-eslint/parser@^3.0.2", "@typescript-eslint/parser@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-3.2.0.tgz#d9d7867456b1b8ecae9e724269b0bc932f06cbca"
   integrity sha512-Vhu+wwdevDLVDjK1lIcoD6ZbuOa93fzqszkaO3iCnmrScmKwyW/AGkzc2UvfE5TCoCXqq7Jyt6SOXjsIlpqF4A==
@@ -4179,6 +4179,25 @@ eslint-plugin-import@^2.20.2:
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
 
+eslint-plugin-import@^2.21.2:
+  version "2.21.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.21.2.tgz#8fef77475cc5510801bedc95f84b932f7f334a7c"
+  integrity sha512-FEmxeGI6yaz+SnEB6YgNHlQK1Bs2DKLM+YF+vuTk5H8J9CLbJLtlPvRFgZZ2+sXiKAlN5dpdlrWOjK8ZoZJpQA==
+  dependencies:
+    array-includes "^3.1.1"
+    array.prototype.flat "^1.2.3"
+    contains-path "^0.1.0"
+    debug "^2.6.9"
+    doctrine "1.5.0"
+    eslint-import-resolver-node "^0.3.3"
+    eslint-module-utils "^2.6.0"
+    has "^1.0.3"
+    minimatch "^3.0.4"
+    object.values "^1.1.1"
+    read-pkg-up "^2.0.0"
+    resolve "^1.17.0"
+    tsconfig-paths "^3.9.0"
+
 eslint-plugin-react-hooks@^4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.0.4.tgz#aed33b4254a41b045818cacb047b81e6df27fa58"
@@ -4229,7 +4248,7 @@ eslint-visitor-keys@^1.1.0, eslint-visitor-keys@^1.2.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.2.0.tgz#74415ac884874495f78ec2a97349525344c981fa"
   integrity sha512-WFb4ihckKil6hu3Dp798xdzSfddwKKU3+nGniKF6HfeW6OLd2OUDEPP7TcHtB5+QXOKg2s6B2DaMPE1Nn/kxKQ==
 
-eslint@^7.1.0:
+eslint@^7.1.0, eslint@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.2.0.tgz#d41b2e47804b30dbabb093a967fb283d560082e6"
   integrity sha512-B3BtEyaDKC5MlfDa2Ha8/D6DsS4fju95zs0hjS3HdGazw+LNayai38A25qMppK37wWGWNYSPOR6oYzlz5MHsRQ==
