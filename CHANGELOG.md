@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/hdpinc/rehooks/compare/v1.4.2...v1.5.0) (2020-06-24)
+
+
+### Features
+
+* **use-local-storage:** support SSR environment ([712969d](https://github.com/hdpinc/rehooks/commit/712969d3022831ba4ae063f6538f0e573d12b1ab))
+
 ## [1.4.2](https://github.com/hdpinc/rehooks/compare/v1.4.1...v1.4.2) (2020-06-04)
 
 
