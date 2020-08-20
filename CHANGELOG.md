@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/hdpinc/rehooks/compare/v1.5.1...v1.6.0) (2020-08-20)
+
+
+### Features
+
+* **use-bool:** :sparkles: Add toggle function to the fourth parameter ([4e062be](https://github.com/hdpinc/rehooks/commit/4e062be9bd51bbb5442d818a94996964bebf4bc1))
+
 ## [1.5.1](https://github.com/hdpinc/rehooks/compare/v1.5.0...v1.5.1) (2020-07-22)
 
 
