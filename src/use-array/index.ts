@@ -5,7 +5,7 @@ const useArray = <T extends any>(
 ): { state: T[]; toggle: (value: T) => void; reset: () => void; clear: () => void } => {
   const [state, setState] = React.useState<T[]>(initialState)
 
-  const toggle = (value: T) => {
+  const toggle = React.useCallback((value: T) => {
     setState((prev) => {
       const cur = [...prev]
 
@@ -16,15 +16,15 @@ const useArray = <T extends any>(
         return cur
       }
     })
-  }
+  }, [])
 
-  const reset = () => {
+  const reset = React.useCallback(() => {
     setState(initialState)
-  }
+  }, [initialState])
 
-  const clear = () => {
+  const clear = React.useCallback(() => {
     setState([])
-  }
+  }, [])
 
   return { state, toggle, reset, clear }
 }

@@ -116,21 +116,21 @@ const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
     isSelected: !!value && isSameDay(date, normalizeDate(value)),
   }))
 
-  const setDateMode = () => {
+  const setDateMode = React.useCallback(() => {
     setMode('date')
-  }
+  }, [])
 
-  const setMonthMode = () => {
+  const setMonthMode = React.useCallback(() => {
     setMode('month')
-  }
+  }, [])
 
-  const setYearMode = () => {
+  const setYearMode = React.useCallback(() => {
     setMode('year')
-  }
+  }, [])
 
-  const open = () => setOpen(true)
-  const close = () => setOpen(false)
-  const toggle = () => setOpen((isOpen) => !isOpen)
+  const open = React.useCallback(() => setOpen(true), [])
+  const close = React.useCallback(() => setOpen(false), [])
+  const toggle = React.useCallback(() => setOpen((isOpen) => !isOpen), [])
 
   const weekdayIntl = new Intl.DateTimeFormat(locale, { weekday: 'short' })
   const monthIntl = new Intl.DateTimeFormat(locale, { month: 'short' })
