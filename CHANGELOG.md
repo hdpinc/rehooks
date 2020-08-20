@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/hdpinc/rehooks/compare/v1.5.0...v1.5.1) (2020-07-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency date-fns to ^2.15.0 ([ff172b3](https://github.com/hdpinc/rehooks/commit/ff172b37a2422bd5849e5070e30e7b6efe2dbc56))
+
 # [1.5.0](https://github.com/hdpinc/rehooks/compare/v1.4.2...v1.5.0) (2020-06-24)
 
 
