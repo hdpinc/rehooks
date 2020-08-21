@@ -6,4 +6,7 @@ module.exports = {
     jest: true,
   },
   extends: ['@jmdc/eslint-config-typescript-react'],
+  rules: {
+    'react-hooks/exhaustive-deps': 'error',
+  },
 }

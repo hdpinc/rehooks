@@ -93,66 +93,69 @@ const useDate = (
     milliseconds: date.getMilliseconds(),
 
     // Operation methods
-    addYear: () => {
+    addYear: React.useCallback(() => {
       update((date) => addYears(date, 1))
-    },
-    addYears: (amount: number) => {
+    }, []),
+    addYears: React.useCallback((amount: number) => {
       update((date) => addYears(date, amount))
-    },
-    subYear: () => {
+    }, []),
+    subYear: React.useCallback(() => {
       update((date) => subYears(date, 1))
-    },
-    subYears: (amount: number) => {
+    }, []),
+    subYears: React.useCallback((amount: number) => {
       update((date) => subYears(date, amount))
-    },
-    addMonth: () => {
+    }, []),
+    addMonth: React.useCallback(() => {
       update((date) => addMonths(date, 1))
-    },
-    addMonths: (amount: number) => {
+    }, []),
+    addMonths: React.useCallback((amount: number) => {
       update((date) => addMonths(date, amount))
-    },
-    subMonth: () => {
+    }, []),
+    subMonth: React.useCallback(() => {
       update((date) => subMonths(date, 1))
-    },
-    subMonths: (amount: number) => {
+    }, []),
+    subMonths: React.useCallback((amount: number) => {
       update((date) => subMonths(date, amount))
-    },
-    addDay: () => {
+    }, []),
+    addDay: React.useCallback(() => {
       update((date) => addDays(date, 1))
-    },
-    addDays: (amount: number) => {
+    }, []),
+    addDays: React.useCallback((amount: number) => {
       update((date) => addDays(date, amount))
-    },
-    subDay: () => {
+    }, []),
+    subDay: React.useCallback(() => {
       update((date) => subDays(date, 1))
-    },
-    subDays: (amount: number) => {
+    }, []),
+    subDays: React.useCallback((amount: number) => {
       update((date) => subDays(date, amount))
-    },
-    format: (fmt: string) => {
-      return format(date, fmt)
-    },
-    setYear: (amount: number) => {
+    }, []),
+    format: React.useCallback(
+      (fmt: string) => {
+        return format(date, fmt)
+      },
+      [date]
+    ),
+    setYear: React.useCallback((amount: number) => {
       update((date) => setYear(date, amount))
-    },
-    setMonth: (amount: number) => {
+    }, []),
+    setMonth: React.useCallback((amount: number) => {
       update((date) => setMonth(date, amount))
-    },
-    setDay: (amount: number) => {
+    }, []),
+    setDay: React.useCallback((amount: number) => {
       update((date) => setDate(date, amount))
-    },
-    setHours: (hours: number, ...rest) => {
+    }, []),
+    setHours: React.useCallback((hours: number, ...rest) => {
       update((date) => new Date(new Date(date).setHours(hours, ...rest)))
-    },
-    setMinutes: (minutes: number, ...rest) => {
+    }, []),
+    setMinutes: React.useCallback((minutes: number, ...rest) => {
       update((date) => new Date(new Date(date).setMinutes(minutes, ...rest)))
-    },
-    setSeconds: (seconds: number, ...rest) => {
+    }, []),
+    setSeconds: React.useCallback((seconds: number, ...rest) => {
       update((date) => new Date(new Date(date).setSeconds(seconds, ...rest)))
-    },
-    setMilliSeconds: (milliseconds: number) => {
+    }, []),
+    setMilliSeconds: React.useCallback((milliseconds: number) => {
       update((date) => new Date(new Date(date).setMilliseconds(milliseconds)))
-    },
+    }, []),
   }
 }
 

@@ -19,23 +19,26 @@ const useLocalStorage = <T>(key: string, initialValue: T): UseLocalStorageResult
     }
   })
 
-  const setItem = (value: unknown) => {
-    try {
-      const valueToStore = value instanceof Function ? value(storedValue) : value
-      setStoredValue(valueToStore)
-      window.localStorage.setItem(key, JSON.stringify(valueToStore))
-    } catch (error) {
-      logError(error)
-    }
-  }
+  const setItem = React.useCallback(
+    (value: unknown) => {
+      try {
+        const valueToStore = value instanceof Function ? value(storedValue) : value
+        setStoredValue(valueToStore)
+        window.localStorage.setItem(key, JSON.stringify(valueToStore))
+      } catch (error) {
+        logError(error)
+      }
+    },
+    [key, storedValue]
+  )
 
-  const removeItem = () => {
+  const removeItem = React.useCallback(() => {
     try {
       window.localStorage.removeItem(key)
     } catch (error) {
       logError(error)
     }
-  }
+  }, [key])
 
   return [storedValue, setItem, removeItem]
 }
