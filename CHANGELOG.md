@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/hdpinc/rehooks/compare/v1.6.0...v1.7.0) (2020-08-21)
+
+
+### Features
+
+* :sparkles: Wrap all helpers with useCallback ([0062647](https://github.com/hdpinc/rehooks/commit/0062647377e2a8ba26d743534d033a5dff070cf0))
+
 # [1.6.0](https://github.com/hdpinc/rehooks/compare/v1.5.1...v1.6.0) (2020-08-20)
 
 
