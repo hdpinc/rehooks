@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks'
-import useDate from './index'
+import { useDate } from './index'
 
 describe('values', () => {
   it('each figures', () => {

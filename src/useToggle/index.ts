@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useToggle = (initialState: boolean): [boolean, (state?: unknown) => void] => {
+export const useToggle = (initialState: boolean): [boolean, (state?: unknown) => void] => {
   const [state, setState] = React.useState(initialState)
   const toggle = React.useCallback(
     (nextState?: unknown) =>
@@ -15,5 +15,3 @@ const useToggle = (initialState: boolean): [boolean, (state?: unknown) => void] 
   )
   return [state, toggle]
 }
-
-export default useToggle

@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import useToggle from './index'
+import { useToggle } from './index'
 
 it('toggle state', () => {
   const { result } = renderHook(() => useToggle(false))

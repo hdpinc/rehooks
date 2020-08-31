@@ -1,6 +1,6 @@
 import { format, isAfter, isBefore, isSameDay, isSameMonth, parseISO, startOfMonth } from 'date-fns'
 import React from 'react'
-import useDate, { DateLike, UseDateReturn } from '../useDate'
+import { useDate, DateLike, UseDateReturn } from '../useDate'
 import { getDateMatrixForYearMonth } from './utils'
 
 type InputMode = 'date' | 'month' | 'year'
@@ -93,7 +93,7 @@ const OCTOBER = new Date('2000-10-01')
 const NOVEMBER = new Date('2000-11-01')
 const DECEMBER = new Date('2000-12-01')
 
-const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
+export const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
   const {
     value,
     inputProps,
@@ -185,5 +185,3 @@ const useDatepicker = (options: UseDatepickerOptions): UseDatepickerReturn => {
     mode,
   }
 }
-
-export default useDatepicker

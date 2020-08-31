@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useArray = <T extends any>(
+export const useArray = <T extends any>(
   initialState: T[]
 ): { state: T[]; toggle: (value: T) => void; reset: () => void; clear: () => void } => {
   const [state, setState] = React.useState<T[]>(initialState)
@@ -28,5 +28,3 @@ const useArray = <T extends any>(
 
   return { state, toggle, reset, clear }
 }
-
-export default useArray
