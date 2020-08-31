@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import { useBool } from './index'
+import { useBool } from './useBool'
 
 it('turns on', () => {
   const { result } = renderHook(() => useBool(false))

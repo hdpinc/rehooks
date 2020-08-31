@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { createEvent } from '../../testing/utils'
-import { useKeyDown } from './index'
+import { useKeyDown } from './useKeyDown'
 
 it('callback should be called when Esc key keydown.', () => {
   const fn = jest.fn()

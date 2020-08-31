@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks'
-import { useArray } from './index'
+import { useArray } from './useArray'
 
 const init = ['1', 'abc', 1, 34, undefined, null]
 
