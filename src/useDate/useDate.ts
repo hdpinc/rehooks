@@ -72,7 +72,7 @@ const normalizeDate = (date: DateLike): Date => {
   return typeof date === 'string' ? parseISO(date) : new Date(date)
 }
 
-const useDate = (
+export const useDate = (
   initialDate: DateLike,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   options?: UseDateOptions
@@ -158,5 +158,3 @@ const useDate = (
     }, []),
   }
 }
-
-export default useDate

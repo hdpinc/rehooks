@@ -8,7 +8,7 @@ const logError = (error: Error) => {
   }
 }
 
-const useLocalStorage = <T>(key: string, initialValue: T): UseLocalStorageResult<T> => {
+export const useLocalStorage = <T>(key: string, initialValue: T): UseLocalStorageResult<T> => {
   const [storedValue, setStoredValue] = React.useState<T>(() => {
     try {
       const item = window.localStorage.getItem(key)
@@ -42,5 +42,3 @@ const useLocalStorage = <T>(key: string, initialValue: T): UseLocalStorageResult
 
   return [storedValue, setItem, removeItem]
 }
-
-export default useLocalStorage

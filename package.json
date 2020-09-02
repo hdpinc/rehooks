@@ -29,10 +29,10 @@
   "scripts": {
     "build": "run-p build:cjs build:esm",
     "build:cjs": "run-p build:cjs:js build:cjs:types",
-    "build:cjs:js": "cross-env BABEL_ENV=production babel src -d lib --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx'",
+    "build:cjs:js": "cross-env BABEL_ENV=production babel src -d lib --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.spec.ts,**/*.stories.tsx'",
     "build:cjs:types": "tsc -p tsconfig.types.json --outDir lib",
     "build:esm": "run-p build:esm:js build:esm:types",
-    "build:esm:js": "cross-env BABEL_ENV=production babel src -d esm --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.stories.tsx' --config-file ./.babelrc.esm.js",
+    "build:esm:js": "cross-env BABEL_ENV=production babel src -d esm --extensions '.ts,.tsx' --ignore '**/*.spec.tsx,**/*.spec.ts,**/*.stories.tsx' --config-file ./.babelrc.esm.js",
     "build:esm:types": "tsc -p tsconfig.types.json --outDir esm",
     "jest": "TZ=Asia/Tokyo jest --verbose --color --coverage",
     "karma": "karma start",

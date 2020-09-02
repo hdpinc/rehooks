@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useKeyUp = (key: string, onKeyUp?: () => void) => {
+export const useKeyUp = (key: string, onKeyUp?: () => void) => {
   React.useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       if (e.key === key) {
@@ -15,5 +15,3 @@ const useKeyUp = (key: string, onKeyUp?: () => void) => {
     }
   }, [key, onKeyUp])
 }
-
-export default useKeyUp

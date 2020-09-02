@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useKeyDown = (key: string, onKeyDown?: () => void) => {
+export const useKeyDown = (key: string, onKeyDown?: () => void) => {
   React.useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       if (e.key === key) {
@@ -15,5 +15,3 @@ const useKeyDown = (key: string, onKeyDown?: () => void) => {
     }
   }, [key, onKeyDown])
 }
-
-export default useKeyDown

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useClickAway = (ref: React.RefObject<Element>, callback?: (e: Event) => void) => {
+export const useClickAway = (ref: React.RefObject<Element>, callback?: (e: Event) => void) => {
   React.useEffect(() => {
     const listener = (e: Event) => {
       if (!ref.current || ref.current.contains(e.target as Node)) {
@@ -19,5 +19,3 @@ const useClickAway = (ref: React.RefObject<Element>, callback?: (e: Event) => vo
     }
   }, [ref, callback])
 }
-
-export default useClickAway
