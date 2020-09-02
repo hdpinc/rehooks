@@ -1,3 +1,11 @@
+## [1.7.2](https://github.com/hdpinc/rehooks/compare/v1.7.1...v1.7.2) (2020-09-02)
+
+
+### Bug Fixes
+
+* :bug: Fix build script to ignore spec files ([33aa99b](https://github.com/hdpinc/rehooks/commit/33aa99b20ca3426c792a539b264a4ad549632832))
+* :bug: typo ([222849f](https://github.com/hdpinc/rehooks/commit/222849fd2cac45b375fbcf79dc601a9351150153))
+
 ## [1.7.1](https://github.com/hdpinc/rehooks/compare/v1.7.0...v1.7.1) (2020-09-02)
 
 
