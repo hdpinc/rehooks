@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/hdpinc/rehooks/compare/v1.7.3...v1.7.4) (2020-11-04)
+
+
+### Bug Fixes
+
+* **deps:** update react to v17 ([340a4a6](https://github.com/hdpinc/rehooks/commit/340a4a6d3d059cb881b968cf819fb7e22cad967a))
+
 ## [1.7.3](https://github.com/hdpinc/rehooks/compare/v1.7.2...v1.7.3) (2020-10-21)
 
 
