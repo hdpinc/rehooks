@@ -4,4 +4,5 @@ module.exports = {
     '^.+\\.tsx?$': 'babel-jest',
   },
   verbose: true,
+  transformIgnorePatterns: ['/node_modules/(?!pretty-format).+\\.js$'],
 }
