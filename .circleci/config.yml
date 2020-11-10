@@ -16,7 +16,7 @@ commands:
       - save_cache:
           key: yarn-packages-v3-{{ arch }}-{{ checksum "yarn.lock" }}
           paths:
-            - /usr/local/share/.cache/yarn/v6
+            - /home/runner/.cache/yarn/v6
   save_windows_yarn_cache:
     steps:
       - save_cache:
@@ -27,9 +27,8 @@ commands:
 jobs:
   lint-and-jest:
     docker:
-      - image: node:12
+      - image: node:14
     steps:
-      - run: npm i -g yarn --force
       - run: yarn cache dir
       - checkout
       - install_yarn
@@ -53,7 +52,6 @@ jobs:
   karma:
     executor: win/default
     steps:
-      - run: npm i -g yarn --force
       - run: yarn cache dir
       - checkout
       - install_yarn
@@ -62,9 +60,8 @@ jobs:
 
   release:
     docker:
-      - image: node:12
+      - image: node:14
     steps:
-      - run: npm i -g yarn --force
       - run: yarn cache dir
       - checkout
       - install_yarn
