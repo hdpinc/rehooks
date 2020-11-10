@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/hdpinc/rehooks/compare/v1.7.4...v1.7.5) (2020-11-10)
+
+
+### Bug Fixes
+
+* trigger a release to fix react dependencies issue ([d926f73](https://github.com/hdpinc/rehooks/commit/d926f733adfa17cadb03800b0cdd71fe26f40e56))
+
 ## [1.7.4](https://github.com/hdpinc/rehooks/compare/v1.7.3...v1.7.4) (2020-11-04)
 
 
