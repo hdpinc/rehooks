@@ -28,11 +28,11 @@ import {
 } from 'date-fns'
 import React from 'react'
 
-export type UseDateOptions = {}
+export interface UseDateOptions {}
 
 export type DateLike = Date | string | number
 
-export type UseDateReturn = {
+export interface UseDateReturn {
   date: Date
 
   // Number values

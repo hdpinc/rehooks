@@ -7,7 +7,7 @@ type InputMode = 'date' | 'month' | 'year'
 
 const initialMode: InputMode = 'date'
 
-export type UseDatepickerOptions = {
+export interface UseDatepickerOptions {
   value: string
   max?: DateLike
   min?: DateLike
@@ -17,7 +17,7 @@ export type UseDatepickerOptions = {
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>
 }
 
-export type UseDatepickerReturn = {
+export interface UseDatepickerReturn {
   isOpen: boolean
   open: () => void
   close: () => void
@@ -34,7 +34,7 @@ export type UseDatepickerReturn = {
   mode: InputMode
 }
 
-type DateCell = {
+interface DateCell {
   date: Date
   dateStr: string
   isCurrentMonth: boolean
