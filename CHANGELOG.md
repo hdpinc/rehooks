@@ -1,3 +1,10 @@
+## [1.7.7](https://github.com/hdpinc/rehooks/compare/v1.7.6...v1.7.7) (2021-03-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency date-fns to ^2.18.0 ([5682535](https://github.com/hdpinc/rehooks/commit/5682535efffcd88f75953de76a5bf55604b92108))
+
 ## [1.7.6](https://github.com/hdpinc/rehooks/compare/v1.7.5...v1.7.6) (2021-02-10)
 
 
