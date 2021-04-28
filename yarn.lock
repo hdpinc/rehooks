@@ -1356,15 +1356,15 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jmdc/eslint-config-typescript-react@^1.1.96":
-  version "1.1.96"
-  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript-react/-/eslint-config-typescript-react-1.1.96.tgz#896bb6b85e43ae3a266f1e8cb2b29b6ba6df0074"
-  integrity sha512-fcpCFqVxr6UFI7iyZ6sLajw/2n7bF4IyC32AsLvzCkjKV8rcKqn7ZhbgTYABV02B9ept81a7SwF3rUu/7USQAQ==
+"@jmdc/eslint-config-typescript-react@^1.1.98":
+  version "1.1.98"
+  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript-react/-/eslint-config-typescript-react-1.1.98.tgz#8de1d6ed7732954bc61d5d83edc6bdedaefa6df5"
+  integrity sha512-eRZpsurZFGZJ/w3n0SxAVsOLddVTArZ1v1A5S07jHqJ4MuLh4Shs/K9rh0sphTaO7CEQsHsuZFL7yVJHpphWRg==
 
-"@jmdc/eslint-config-typescript@^1.3.90":
-  version "1.3.90"
-  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript/-/eslint-config-typescript-1.3.90.tgz#36695274a67a2b7ffc9f1f0c5ba477826392a667"
-  integrity sha512-cs+UQBECvEM8IbSz0D1T5eYFMCmq6ggWF2vYiLQZeOdwt4LsVl5JSd6dnQtQkm9wmOM3wG0G25P463jtSpToVQ==
+"@jmdc/eslint-config-typescript@^1.3.92":
+  version "1.3.92"
+  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript/-/eslint-config-typescript-1.3.92.tgz#54b4b4adf035ced269171234c83583a81778c713"
+  integrity sha512-qo6W8BJmM0K3gL/i4PWRsKcvOAoJQ3H62fG6elchRpe9j+o6XLcFj4PvwumNzjdRsV0j4VltRqkEm68DMgqc9w==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -4402,10 +4402,10 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.0.0.tgz#21fdc8fbcd9c795cc0321f0563702095751511a8"
   integrity sha512-QudtT6av5WXels9WjIM7qz1XD1cWGvX4gGXvp/zBn9nXG02D0utdU3Em2m/QjTnrsk6bBjmCygl3rmj118msQQ==
 
-eslint@^7.24.0:
-  version "7.24.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.24.0.tgz#2e44fa62d93892bfdb100521f17345ba54b8513a"
-  integrity sha512-k9gaHeHiFmGCDQ2rEfvULlSLruz6tgfA8DEn+rY9/oYPFFTlz55mM/Q/Rij1b2Y42jwZiK3lXvNTw6w6TXzcKQ==
+eslint@^7.25.0:
+  version "7.25.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.25.0.tgz#1309e4404d94e676e3e831b3a3ad2b050031eb67"
+  integrity sha512-TVpSovpvCNpLURIScDRB6g5CYu/ZFq9GfX2hLNIV4dSBKxIWojeDODvYl3t0k0VtMxYeR8OXPCFE5+oHMlGfhw==
   dependencies:
     "@babel/code-frame" "7.12.11"
     "@eslint/eslintrc" "^0.4.0"
