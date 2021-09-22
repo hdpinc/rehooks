@@ -84,7 +84,7 @@
     "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^5.1.1",
+    "husky": "^7.0.2",
     "jasmine": "^3.6.1",
     "jest": "^25.5.4",
     "karma": "^6.1.1",
