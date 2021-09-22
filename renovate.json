@@ -16,7 +16,7 @@
     {
       "matchDepTypes": ["engines"],
       "enabled": false
-    },    
+    },
     {
       "depTypeList": ["peerDependencies"],
       "enabled": false
