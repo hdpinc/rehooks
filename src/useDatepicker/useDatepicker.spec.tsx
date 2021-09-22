@@ -26,9 +26,9 @@ const Comp: React.FC<Partial<UseDatepickerOptions>> = (props) => {
   return (
     <div>
       <div>
-        <button data-testid={'date'} onClick={setDateMode}></button>
-        <button data-testid={'month'} onClick={setMonthMode}></button>
-        <button data-testid={'year'} onClick={setYearMode}></button>
+        <button data-testid={'date'} onClick={setDateMode} />
+        <button data-testid={'month'} onClick={setMonthMode} />
+        <button data-testid={'year'} onClick={setYearMode} />
         <div data-testid={'mode'}>{mode}</div>
       </div>
       <div data-testid={'days-of-week'}>
