@@ -90,7 +90,7 @@
     "karma": "^6.1.1",
     "karma-chrome-launcher": "^3.1.0",
     "karma-edge-launcher": "^0.4.2",
-    "karma-firefox-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^2.1.1",
     "karma-ie-launcher": "^1.0.0",
     "karma-jasmine": "^4.0.1",
     "karma-safari-launcher": "^1.0.0",
