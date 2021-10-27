@@ -1642,15 +1642,15 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@jmdc/eslint-config-typescript-react@^1.1.185":
-  version "1.1.185"
-  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript-react/-/eslint-config-typescript-react-1.1.185.tgz#0381b665b211e2c7d58396b9ea2aff0a41614723"
-  integrity sha512-ou/Yz+y/+xLnouuAj2P6Y020kbfveOFrf8r/dG0UOeAiQx5kn6GTAmlwfiCCQcY4g0E2Wq06Y4l08WAD9KvA3w==
+"@jmdc/eslint-config-typescript-react@^1.1.188":
+  version "1.1.188"
+  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript-react/-/eslint-config-typescript-react-1.1.188.tgz#48b13846aa590e1381785c10879c2472125bf739"
+  integrity sha512-mQZu7yAs4B8MqlfnodyFTUZTS2cteOuW9CLcgaUhrZsf8PTb1qqzFl9Q3pnxi+61kDJsXm1yKg1iNyzv7V3Gzw==
 
-"@jmdc/eslint-config-typescript@^1.3.179":
-  version "1.3.179"
-  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript/-/eslint-config-typescript-1.3.179.tgz#4aa0bd58c2cb4691a4227067d1ba5d05daa6582e"
-  integrity sha512-ef6ZSWGZOGfJye8fW0kkaJf98kIYKlVlg76cUovKdDtWQJVHuYVGaU1nKyLzOdM/gNlSvUMR5gTt+urg6IRzwQ==
+"@jmdc/eslint-config-typescript@^1.3.182":
+  version "1.3.182"
+  resolved "https://registry.yarnpkg.com/@jmdc/eslint-config-typescript/-/eslint-config-typescript-1.3.182.tgz#db76416519674c07d8e35a45afc318f1cf7e4490"
+  integrity sha512-k2V7Q3SfXl5Bu3ngYfC8VXOjEn2r8eZNRudzXFeBKiHnSfhilZTgaA7lax93bgFzZPoTxNtpdOtzc3kpgVNHfw==
 
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.3":
   version "2.1.8-no-fsevents.3"
