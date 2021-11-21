@@ -1,3 +1,12 @@
+## [1.7.16](https://github.com/hdpinc/rehooks/compare/v1.7.15...v1.7.16) (2021-11-21)
+
+
+### Bug Fixes
+
+* dedupe lockfile ([50135c2](https://github.com/hdpinc/rehooks/commit/50135c2a42e0554d74679601fda1c64f96b64e6c))
+* **deps:** update dependency date-fns to ^2.25.0 ([1f1f575](https://github.com/hdpinc/rehooks/commit/1f1f57598c058901751b4792f9d28fa3662f1f6a))
+* fix type ([48f24e0](https://github.com/hdpinc/rehooks/commit/48f24e094a1e7d425af4b8f9dcddda1c84bc0d81))
+
 ## [1.7.15](https://github.com/hdpinc/rehooks/compare/v1.7.14...v1.7.15) (2021-09-22)
 
 
