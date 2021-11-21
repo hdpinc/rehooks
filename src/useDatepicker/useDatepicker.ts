@@ -1,6 +1,6 @@
 import { format, isAfter, isBefore, isSameDay, isSameMonth, parseISO, startOfMonth } from 'date-fns'
 import React from 'react'
-import { useDate, DateLike, UseDateReturn } from '../useDate/useDate'
+import { DateLike, useDate, UseDateReturn } from '../useDate/useDate'
 import { getDateMatrixForYearMonth } from './utils'
 
 type InputMode = 'date' | 'month' | 'year'

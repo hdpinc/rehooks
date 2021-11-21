@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/react'
-import { renderHook, act } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react-hooks'
 import { createEvent } from '../../testing/utils'
 import { useKeyUp } from './useKeyUp'
 
