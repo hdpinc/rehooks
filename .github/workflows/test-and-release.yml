@@ -66,5 +66,5 @@ jobs:
       - name: release
         run: yarn semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN_WITH_WRITE_PERMISSION }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
