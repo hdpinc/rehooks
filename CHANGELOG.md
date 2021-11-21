@@ -1,3 +1,11 @@
+## [1.7.17](https://github.com/hdpinc/rehooks/compare/v1.7.16...v1.7.17) (2021-11-21)
+
+
+### Bug Fixes
+
+* chore ([f0b8934](https://github.com/hdpinc/rehooks/commit/f0b893444a01ab96b78c0ab7858130dac1a33067))
+* fix build ([55113b4](https://github.com/hdpinc/rehooks/commit/55113b4c3e703a110acc155a1151b89169acf12f))
+
 ## [1.7.16](https://github.com/hdpinc/rehooks/compare/v1.7.15...v1.7.16) (2021-11-21)
 
 
