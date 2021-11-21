@@ -6,7 +6,7 @@ import { addDays, getDay, getDaysInMonth, startOfWeek } from 'date-fns'
 export const getDateMatrixForYearMonth = <T = Date>(
   year: number,
   month: number,
-  mapper: (date: Date) => T = (date) => (date as any) as T
+  mapper: (date: Date) => T = (date) => date as any as T
 ): T[][] => {
   const startDate = startOfWeek(new Date(year, month, 1))
   const startOfMonth = new Date(year, month, 1)
