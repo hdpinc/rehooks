@@ -1,0 +1,39 @@
+{
+  extends: ['config:base'],
+  timezone: 'Asia/Tokyo',
+  schedule: ['after 3am on wednesday'],
+  prHourlyLimit: 0,
+  rangeStrategy: 'bump',
+  postUpdateOptions: ['yarnDedupeHighest'], // yarn.lock の重複レコードを除去
+  prCreation: 'not-pending',
+  major: {
+    stabilityDays: 7,
+    automerge: false,
+  },
+  minor: {
+    stabilityDays: 3,
+    automerge: true,
+  },
+  patch: {
+    stabilityDays: 3,
+    automerge: true,
+  },
+  packageRules: [
+    {
+      matchDepTypes: ['engines'],
+      enabled: false,
+    },
+    {
+      depTypeList: ['peerDependencies'],
+      enabled: false,
+    },
+    {
+      groupName: 'eslint',
+      packagePatterns: ['^@jmdc/eslint-config-', '^@typescript-eslint/', '^eslint'],
+    },
+    {
+      groupName: 'react',
+      packageNames: ['react', 'react-dom', 'react-test-renderer'],
+    },
+  ],
+}
