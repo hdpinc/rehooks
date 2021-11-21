@@ -2,7 +2,7 @@ import React from 'react'
 
 export type UseLocalStorageResult<T> = [T, (value: T) => void, () => void]
 
-const logError = (error: Error) => {
+const logError = (error: unknown) => {
   if (process.env.NODE_ENV !== 'production') {
     console.error(error)
   }
