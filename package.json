@@ -70,7 +70,7 @@
     "@testing-library/react": "^10.4.8",
     "@testing-library/react-hooks": "^3.4.1",
     "@types/jest": "^27.0.3",
-    "@types/node": "^16.11.9",
+    "@types/node": "^16.11.17",
     "@types/react": "^17.0.37",
     "@types/webpack": "^4.41.32",
     "@types/webpack-env": "^1.16.3",
