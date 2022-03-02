@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: yarn
@@ -29,7 +29,7 @@ jobs:
         browser: [chrome, firefox]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: yarn
@@ -42,7 +42,7 @@ jobs:
         browser: [ie]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: yarn
@@ -57,7 +57,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false # protected branch に push するため personal access token を使います
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: yarn
