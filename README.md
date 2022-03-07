@@ -1,3 +1,5 @@
+# [DEPRECATED] This library is no longer maintained. Write your own hooks instead!
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![test-and-release](https://github.com/hdpinc/rehooks/workflows/test-and-release/badge.svg)
 
